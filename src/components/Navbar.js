@@ -22,7 +22,6 @@ const moreLinks = [
   { href: "/healing-school", label: "Healing School" },
   { href: "/prayer-request", label: "Prayer Request" },
   { href: "/devotionals", label: "Apokalupsis" },
-  { href: "/live", label: "Watch Live" },
 ];
 
 const socials = [
