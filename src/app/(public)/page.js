@@ -5,19 +5,16 @@ import AnimatedMission from "@/components/AnimatedMission";
 import LiveCountdown from "@/components/LiveCountdown";
 
 export default async function HomePage() {
-  const messages = await prisma.message.findMany({ orderBy: { id: "desc" }, take: 4 });
+  const messages = await prisma.message.findMany({ orderBy: { id: "desc" }, take: 6 });
   const wordOfTheYear = await prisma.wordOfTheYear.findFirst();
 
   return (
     <>
       {/* Hero */}
       <div className="hero-section">
-        {/* Animated orbs */}
         <div className="hero-orb hero-orb-1" style={{ zIndex: 1 }} />
         <div className="hero-orb hero-orb-2" style={{ zIndex: 1 }} />
         <div className="hero-orb hero-orb-3" style={{ zIndex: 1 }} />
-
-        {/* Sparkle particles */}
         <div className="hero-particles" style={{ zIndex: 1 }}>
           {[...Array(12)].map((_, i) => (
             <div
@@ -32,63 +29,51 @@ export default async function HomePage() {
             />
           ))}
         </div>
-
-        {/* Glow */}
         <div className="hero-glow" style={{ zIndex: 1 }} />
-
-        {/* Fade bottom */}
         <div className="hero-fade-bottom" />
 
-        {/* Content */}
         <div className="max-w-5xl mx-auto text-center px-4 relative" style={{ zIndex: 3 }}>
           <p className="animate-fade-in-up text-white/60 uppercase tracking-[0.35em] text-xs md:text-sm mb-4 font-medium">
             Welcome to
           </p>
-
-          {/* Animated divider line */}
           <div className="flex justify-center mb-6">
             <div className="animate-line-expand h-[2px] bg-gradient-to-r from-transparent via-white/50 to-transparent" />
           </div>
-
           <h1 className="animate-fade-in-scale animate-delay-1 text-4xl md:text-6xl lg:text-7xl font-bold mb-4 leading-[1.1]">
             Ambassadors of Christ
           </h1>
-          <h1 className="animate-fade-in-scale animate-delay-2 text-3xl md:text-5xl lg:text-6xl font-bold mb-8 leading-tight">
-            <span className="hero-gradient-text">
-              Ministries International
-            </span>
+          <h1 className="animate-fade-in-scale animate-delay-2 text-3xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+            <span className="hero-gradient-text">Ministries International</span>
           </h1>
-
-          <p className="animate-fade-in-up animate-delay-3 text-base md:text-xl text-white/70 mb-12 max-w-2xl mx-auto leading-relaxed font-light">
+          <p className="animate-fade-in-up animate-delay-3 text-base md:text-lg text-white/70 mb-10 max-w-xl mx-auto leading-relaxed font-light">
             The joy of being in God&apos;s presence is an unparalleled experience
           </p>
-
-          <div className="animate-fade-in-up animate-delay-4 flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="https://youtube.com/@aocmizioncity" target="_blank" className="bg-red-600 text-white px-6 py-2.5 md:px-7 md:py-3 rounded-full font-semibold text-base hover:bg-red-700 transition-all duration-300 shadow-md hover:shadow-lg group">
-              Watch Live &nbsp;<i className="fab fa-youtube group-hover:scale-110 transition-transform" />
+          <div className="animate-fade-in-up animate-delay-4 flex flex-col sm:flex-row gap-3 justify-center">
+            <a href="https://youtube.com/@aocmizioncity" target="_blank" className="bg-red-600 text-white px-7 py-3 rounded-full font-semibold text-sm hover:bg-red-700 transition-all duration-300 shadow-lg hover:shadow-xl inline-flex items-center gap-2 group">
+              <i className="fab fa-youtube group-hover:scale-110 transition-transform" /> Watch Live
             </a>
-            <a href="https://t.me/zioncitymessages" className="btn-blue text-base group">
-              Join Telegram &nbsp;<i className="fab fa-telegram group-hover:scale-110 transition-transform" />
+            <a href="https://t.me/zioncitymessages" target="_blank" className="btn-blue text-sm inline-flex items-center gap-2 group">
+              <i className="fab fa-telegram group-hover:scale-110 transition-transform" /> Join Telegram
             </a>
           </div>
         </div>
       </div>
 
-      {/* Service Times Bar */}
-      <section className="bg-white relative z-10 -mt-16">
-        <div className="max-w-5xl mx-auto px-4">
-          <div className="bg-white rounded-2xl shadow-xl p-6 md:p-8 grid md:grid-cols-2 gap-6 text-center">
+      {/* Service Times */}
+      <section className="bg-white relative z-10 -mt-14">
+        <div className="max-w-4xl mx-auto px-4">
+          <div className="bg-white rounded-2xl shadow-xl p-5 md:p-7 grid grid-cols-2 gap-4">
             {[
-              { icon: "fa-sun", color: "text-yellow-500", title: "Sunday Service", time: "9:00 AM WAT" },
-              { icon: "fa-pray", color: "text-purple-500", title: "Prayer Meeting", time: "Friday 5:00 PM" },
+              { icon: "fa-sun", color: "text-yellow-500 bg-yellow-50", title: "Sunday Service", time: "9:00 AM WAT" },
+              { icon: "fa-pray", color: "text-purple-500 bg-purple-50", title: "Prayer Meeting", time: "Friday 5:00 PM" },
             ].map((s) => (
-              <div key={s.title} className="flex items-center gap-4 justify-center md:justify-start">
-                <div className={`w-12 h-12 rounded-full bg-gray-50 flex items-center justify-center ${s.color}`}>
-                  <i className={`fas ${s.icon} text-xl`} />
+              <div key={s.title} className="flex items-center gap-3">
+                <div className={`w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center shrink-0 ${s.color}`}>
+                  <i className={`fas ${s.icon} text-lg`} />
                 </div>
-                <div className="text-left">
-                  <p className="font-bold text-sm">{s.title}</p>
-                  <p className="text-gray-400 text-xs">{s.time}</p>
+                <div>
+                  <p className="font-bold text-xs md:text-sm">{s.title}</p>
+                  <p className="text-gray-400 text-[11px] md:text-xs">{s.time}</p>
                 </div>
               </div>
             ))}
@@ -97,44 +82,74 @@ export default async function HomePage() {
       </section>
 
       <LiveCountdown />
-
       <AnimatedMission />
 
-      {/* Online Service */}
+      {/* Join Our Service Online */}
       <section className="py-16 bg-gray-50">
-        <div className="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
+        <div className="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-10 items-center">
           <div>
             <span className="purple-text">Online</span>
-            <h2 className="text-3xl md:text-4xl font-bold my-4">Join Our Service Online</h2>
-            <p className="text-gray-500 mb-6 leading-relaxed">
+            <h2 className="text-2xl md:text-3xl font-bold my-3">Join Our Service Online</h2>
+            <p className="text-gray-500 text-sm mb-6 leading-relaxed">
               Join us for powerful worship experience and practical teachings of
               God&apos;s word like never before. Whether you&apos;re at home or on the go,
-              connect with us online.
+              connect with us online every Sunday.
             </p>
-            <div className="flex gap-3">
-              <Link href="/events" className="btn-blue text-sm">
+            <div className="flex flex-wrap gap-3">
+              <a href="https://youtube.com/@aocmizioncity" target="_blank" className="bg-red-600 text-white px-5 py-2.5 rounded-full font-semibold text-xs inline-flex items-center gap-2 hover:bg-red-700 transition shadow-md">
+                <i className="fab fa-youtube" /> YouTube
+              </a>
+              <Link href="/events" className="btn-blue text-xs">
                 Upcoming Events
-              </Link>
-              <Link href="/live" className="bg-gray-200 text-gray-700 px-6 py-3 rounded-full font-semibold text-sm hover:bg-gray-300 transition">
-                Watch Live
               </Link>
             </div>
           </div>
-          <div className="relative">
-            <div className="absolute -bottom-4 -left-4 w-24 h-24 bg-[#1a237e] rounded-2xl -z-10" />
-            <div className="absolute -top-4 -right-4 w-24 h-24 bg-purple-200 rounded-2xl -z-10" />
+          <div className="grid grid-cols-2 gap-3">
+            <img src="/img/church-1.jpg" alt="Service" className="rounded-xl w-full h-40 object-cover shadow-md" />
+            <img src="/img/church-2.jpg" alt="Service" className="rounded-xl w-full h-40 object-cover shadow-md mt-6" />
+            <img src="/img/church-3.jpg" alt="Service" className="rounded-xl w-full h-40 object-cover shadow-md -mt-6" />
+            <img src="/img/church-4.jpg" alt="Service" className="rounded-xl w-full h-40 object-cover shadow-md" />
+          </div>
+        </div>
+      </section>
+
+      {/* About */}
+      <section className="py-16">
+        <div className="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-10 items-center">
+          <div className="relative order-2 md:order-1">
+            <img src="/img/pastor-gmp.jpg" alt="Pastor" className="rounded-2xl w-full shadow-xl" />
+            <div className="absolute -bottom-3 -right-3 w-20 h-20 bg-yellow-200 rounded-2xl -z-10" />
+            <div className="absolute -top-3 -left-3 w-16 h-16 bg-[#1a237e]/20 rounded-2xl -z-10" />
+          </div>
+          <div className="order-1 md:order-2">
+            <span className="purple-text">Zion City — The Heavenly Jerusalem</span>
+            <h2 className="text-2xl md:text-3xl font-bold my-3">
+              Ambassadors of Christ Ministries International
+            </h2>
+            <p className="text-gray-500 text-sm mb-4 leading-relaxed">
+              The Ambassadors of Christ Ministries (Zion City) is called with the
+              main objective of propagating the gospel of reconciliation. We are a
+              community of believers passionate about God&apos;s word and His presence.
+            </p>
+            <p className="text-gray-500 text-sm mb-6 leading-relaxed">
+              Our community is built on the foundation of love, faith, and the
+              uncompromising truth of scripture.
+            </p>
+            <Link href="/about-us" className="btn-blue text-xs">
+              Learn More &nbsp;<i className="fas fa-arrow-right text-[10px]" />
+            </Link>
           </div>
         </div>
       </section>
 
       {/* PPS Teachings */}
-      <section className="py-16">
+      <section className="py-16 bg-gray-50">
         <div className="max-w-6xl mx-auto px-4">
-          <div className="text-center mb-10">
+          <div className="text-center mb-8">
             <span className="purple-text">Teachings</span>
             <h2 className="section-title mt-2">PPS Teachings</h2>
           </div>
-          <div className="max-w-3xl mx-auto">
+          <div className="max-w-2xl mx-auto">
             <video
               src="/videos/church-highlight.mp4"
               controls
@@ -142,47 +157,23 @@ export default async function HomePage() {
               playsInline
               className="rounded-2xl w-full shadow-xl"
             />
-            <div className="text-center mt-6">
-              <a href="https://youtube.com/@drprincebuma" target="_blank" className="btn-blue text-sm">
-                Watch More on YouTube &nbsp;<i className="fab fa-youtube" />
+            <div className="text-center mt-5">
+              <a href="https://youtube.com/@drprincebuma" target="_blank" className="bg-red-600 text-white px-6 py-2.5 rounded-full font-semibold text-xs inline-flex items-center gap-2 hover:bg-red-700 transition shadow-md">
+                <i className="fab fa-youtube" /> Watch More on YouTube
               </a>
             </div>
           </div>
         </div>
       </section>
 
-      {/* About */}
-      <section className="py-16">
-        <div className="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
-          <div className="relative order-2 md:order-1">
-            <img src="/img/pastor-gmp.jpg" alt="Pastor" className="rounded-2xl w-full shadow-xl" />
-            <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-yellow-200 rounded-2xl -z-10" />
-          </div>
-          <div className="order-1 md:order-2">
-            <span className="purple-text">Zion City — The Heavenly Jerusalem</span>
-            <h2 className="text-3xl md:text-4xl font-bold my-4">
-              Ambassadors of Christ Ministries International
-            </h2>
-            <p className="text-gray-500 mb-6 leading-relaxed">
-              The Ambassadors of Christ Ministries (Zion City) is called with the
-              main objective of propagating the gospel of reconciliation. We are a
-              community of believers passionate about God&apos;s word and His presence.
-            </p>
-            <Link href="/about-us" className="btn-blue text-sm">
-              Learn More &nbsp;<i className="fas fa-arrow-right" />
-            </Link>
-          </div>
-        </div>
-      </section>
-
       {/* Afro Gospel Sunday */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16">
         <div className="max-w-6xl mx-auto px-4">
-          <div className="text-center mb-10">
+          <div className="text-center mb-8">
             <span className="purple-text">Events</span>
             <h2 className="section-title mt-2">Afro Gospel Sunday</h2>
           </div>
-          <div className="grid md:grid-cols-2 gap-8 items-center">
+          <div className="grid md:grid-cols-2 gap-8 items-center max-w-4xl mx-auto">
             <video
               src="/videos/video_2026-03-16_21-49-23.mp4"
               controls
@@ -190,23 +181,23 @@ export default async function HomePage() {
               playsInline
               className="rounded-2xl w-full shadow-xl"
             />
-            <div>
-              <Link href="/events" className="btn-blue text-sm">
-                View Events &nbsp;<i className="fas fa-arrow-right" />
+            <div className="text-center md:text-left">
+              <Link href="/events" className="btn-blue text-xs">
+                View All Events &nbsp;<i className="fas fa-arrow-right text-[10px]" />
               </Link>
             </div>
           </div>
         </div>
       </section>
 
-
       {/* Messages */}
       <section className="py-16 bg-blue-gradient text-white">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-10">
-            <h2 className="text-3xl md:text-4xl font-bold mt-2">Download & Listen to Our Latest Messages</h2>
+            <span className="text-white/60 uppercase tracking-wider text-xs">Listen & Learn</span>
+            <h2 className="text-2xl md:text-3xl font-bold mt-2">Download & Listen to Our Latest Messages</h2>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-5">
             {messages.length > 0 ? (
               messages.map((m) => (
                 <Link key={m.id} href={`/our-messages/${m.slug}`} className="messages-link group">
@@ -215,19 +206,19 @@ export default async function HomePage() {
                       <img
                         src={`/uploads/messages/${m.image}`}
                         alt={m.title}
-                        className="w-full h-32 md:h-44 object-cover group-hover:scale-105 transition-transform duration-500"
+                        className="w-full h-32 md:h-40 object-cover group-hover:scale-105 transition-transform duration-500"
                       />
                     </div>
-                    <div className="p-5">
-                      <h3 className="font-bold mb-2 text-sm">
-                        {m.title.length > 30 ? m.title.slice(0, 30) + "..." : m.title}
+                    <div className="p-4">
+                      <h3 className="font-bold text-xs md:text-sm mb-1">
+                        {m.title.length > 35 ? m.title.slice(0, 35) + "..." : m.title}
                       </h3>
-                      <p className="text-xs text-gray-400 mb-3">
+                      <p className="text-[10px] md:text-xs text-gray-400 mb-2">
                         {new Date(m.createdAt).toLocaleDateString("en-US", {
                           year: "numeric", month: "short", day: "numeric",
                         })}
                       </p>
-                      <span className="text-[#1a237e] text-xs font-semibold group-hover:underline">
+                      <span className="text-[#1a237e] text-[10px] md:text-xs font-semibold group-hover:underline">
                         Listen Now →
                       </span>
                     </div>
@@ -235,15 +226,15 @@ export default async function HomePage() {
                 </Link>
               ))
             ) : (
-              <p className="col-span-4 text-center text-white/60">No messages uploaded yet</p>
+              <p className="col-span-3 text-center text-white/60">No messages uploaded yet</p>
             )}
           </div>
-          <div className="text-center mt-10 flex flex-col sm:flex-row gap-3 justify-center">
-            <Link href="/our-messages" className="btn-outline">
-              View All Messages
+          <div className="text-center mt-8 flex flex-col sm:flex-row gap-3 justify-center">
+            <Link href="/our-messages" className="btn-outline text-sm">
+              View More
             </Link>
-            <a href="https://t.me/zioncitymessages" target="_blank" className="btn-outline">
-              <i className="fab fa-telegram mr-2" /> Download on Telegram
+            <a href="https://t.me/zioncitymessages" target="_blank" className="btn-outline text-sm inline-flex items-center gap-2">
+              <i className="fab fa-telegram" /> Download on Telegram
             </a>
           </div>
         </div>
@@ -252,7 +243,7 @@ export default async function HomePage() {
       {/* Word of the Year */}
       {wordOfTheYear && (
         <section className="py-16">
-          <div className="max-w-6xl mx-auto px-4 grid md:grid-cols-5 gap-8 items-center">
+          <div className="max-w-5xl mx-auto px-4 grid md:grid-cols-5 gap-8 items-center">
             <div className="md:col-span-3">
               <img
                 src={`/img/${wordOfTheYear.img}`}
@@ -262,66 +253,62 @@ export default async function HomePage() {
             </div>
             <div className="md:col-span-2">
               <span className="purple-text">Prophetic Declaration</span>
-              <h2 className="text-3xl md:text-4xl font-bold my-4">Word of the Year</h2>
-              <h3 className="text-xl text-[#1a237e] font-bold mb-4">{wordOfTheYear.title}</h3>
-              <p className="text-gray-500 leading-relaxed">{wordOfTheYear.description}</p>
+              <h2 className="text-2xl md:text-3xl font-bold my-3">Word of the Year</h2>
+              <h3 className="text-lg text-[#1a237e] font-bold mb-3">{wordOfTheYear.title}</h3>
+              <p className="text-gray-500 text-sm leading-relaxed">{wordOfTheYear.description}</p>
             </div>
           </div>
         </section>
       )}
 
-      {/* Photo Gallery Preview */}
-      <section className="py-16">
+      {/* Photo Gallery */}
+      <section className="py-16 bg-gray-50">
         <div className="max-w-6xl mx-auto px-4">
-          <div className="text-center mb-10">
+          <div className="text-center mb-8">
             <span className="purple-text">Pictorial Moments</span>
             <h2 className="section-title mt-2">Live at AOCMI-ZIONCITY</h2>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-            {["/img/church-1.jpg","/img/church-2.jpg","/img/church-3.jpg","/img/church-4.jpg","/img/church-5.jpg","/img/church-6.jpg"].map((src) => (
-              <div key={src} className="overflow-hidden rounded-xl shadow-md">
-                <img src={src} alt="AOCMI" className="w-full h-48 md:h-56 object-cover hover:scale-105 transition-transform duration-500" />
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+            {["/img/church-5.jpg","/img/church-6.jpg","/img/church-7.jpg","/img/church-8.jpg","/img/church-9.jpg","/img/church-10.jpg","/img/church-11.jpg","/img/church-12.jpg"].map((src) => (
+              <div key={src} className="overflow-hidden rounded-xl shadow-sm group">
+                <img src={src} alt="AOCMI" className="w-full h-36 md:h-44 object-cover group-hover:scale-110 transition-transform duration-500" />
               </div>
             ))}
           </div>
-          <div className="text-center mt-8">
-            <Link href="/gallery" className="btn-blue text-sm">
-              View Full Gallery &nbsp;<i className="fas fa-arrow-right" />
+          <div className="text-center mt-7">
+            <Link href="/gallery" className="btn-blue text-xs">
+              View Full Gallery &nbsp;<i className="fas fa-arrow-right text-[10px]" />
             </Link>
           </div>
         </div>
       </section>
 
       {/* Partner + Follow */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-8">
-          {/* Partner */}
+      <section className="py-16">
+        <div className="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-6">
           <div
-            className="rounded-2xl p-6 md:p-10 text-white relative overflow-hidden"
-            style={{
-              background: "linear-gradient(135deg, #1a237e 0%, #4a148c 100%)",
-            }}
+            className="rounded-2xl p-6 md:p-8 text-white relative overflow-hidden"
+            style={{ background: "linear-gradient(135deg, #1a237e 0%, #4a148c 100%)" }}
           >
-            <div className="absolute top-0 right-0 w-40 h-40 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2" />
-            <div className="absolute bottom-0 left-0 w-32 h-32 bg-white/5 rounded-full translate-y-1/2 -translate-x-1/2" />
+            <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2" />
+            <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/5 rounded-full translate-y-1/2 -translate-x-1/2" />
             <div className="relative z-10">
-              <span className="text-white/60 uppercase tracking-wider text-xs">Give</span>
-              <h2 className="text-3xl font-bold my-3">Partner With God</h2>
-              <p className="text-white/80 mb-6 leading-relaxed">
+              <span className="text-white/60 uppercase tracking-wider text-[10px]">Give</span>
+              <h2 className="text-2xl font-bold my-2">Partner With God</h2>
+              <p className="text-white/80 text-sm mb-5 leading-relaxed">
                 There&apos;s no telling what impact you will make as you join us in
                 partnership with God to take the gospel to the ends of the earth.
               </p>
-              <Link href="/givings" className="btn-light text-sm">
+              <Link href="/givings" className="bg-white text-[#1a237e] px-5 py-2.5 rounded-full font-semibold text-xs hover:bg-gray-100 transition shadow-md inline-block">
                 Partner Now
               </Link>
             </div>
           </div>
 
-          {/* Follow */}
-          <div className="bg-white p-6 md:p-8 rounded-2xl shadow-md">
-            <span className="purple-text">Social</span>
-            <h2 className="text-2xl font-bold mt-1 mb-2">Follow Us</h2>
-            <p className="text-gray-400 text-sm mb-5">Learn, engage and grow with us</p>
+          <div className="bg-white p-6 md:p-8 rounded-2xl shadow-md border border-gray-100">
+            <span className="purple-text text-[10px]">Social</span>
+            <h2 className="text-xl font-bold mt-1 mb-1">Follow Us</h2>
+            <p className="text-gray-400 text-xs mb-4">Learn, engage and grow with us</p>
             {[
               ["https://youtube.com/@aocmizioncity", "fa-youtube", "YouTube", "bg-red-50 text-red-500"],
               ["https://instagram.com/aocmizioncity", "fa-instagram", "Instagram", "bg-pink-50 text-pink-500"],
@@ -332,13 +319,13 @@ export default async function HomePage() {
                 key={label}
                 href={href}
                 target="_blank"
-                className="flex items-center gap-4 p-3 rounded-xl hover:bg-gray-50 transition group"
+                className="flex items-center gap-3 p-2.5 rounded-xl hover:bg-gray-50 transition group"
               >
-                <div className={`w-10 h-10 rounded-full ${colors} flex items-center justify-center`}>
-                  <i className={`fab ${icon}`} />
+                <div className={`w-9 h-9 rounded-full ${colors} flex items-center justify-center`}>
+                  <i className={`fab ${icon} text-sm`} />
                 </div>
-                <span className="font-semibold text-sm">{label}</span>
-                <i className="fas fa-arrow-right text-gray-300 ml-auto group-hover:text-gray-500 transition text-xs" />
+                <span className="font-semibold text-xs">{label}</span>
+                <i className="fas fa-arrow-right text-gray-300 ml-auto group-hover:text-[#1a237e] transition text-[10px]" />
               </a>
             ))}
           </div>
@@ -348,23 +335,21 @@ export default async function HomePage() {
       {/* Salvation */}
       <section
         className="py-20 text-white relative"
-        style={{
-          background: "linear-gradient(135deg, #0a1128 0%, #1a237e 50%, #4a148c 100%)",
-        }}
+        style={{ background: "linear-gradient(135deg, #0a1128 0%, #1a237e 50%, #4a148c 100%)" }}
       >
-        <div className="absolute inset-0 bg-[url('/img/salvation-bg.png')] bg-cover bg-center opacity-10" />
+        <div className="absolute inset-0 bg-[url('/img/home-page-1.png')] bg-cover bg-center opacity-5" />
         <div className="max-w-3xl mx-auto px-4 text-center relative z-10">
-          <span className="text-white/60 uppercase tracking-[0.2em] text-sm">Accept Christ</span>
-          <h2 className="text-3xl md:text-4xl font-bold mt-2 mb-2">Prayer for Salvation</h2>
-          <h3 className="text-lg text-white/80 mb-6">Say These Words:</h3>
-          <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 mb-10 text-white/90 leading-relaxed italic">
+          <span className="text-white/60 uppercase tracking-[0.2em] text-xs">Accept Christ</span>
+          <h2 className="text-2xl md:text-3xl font-bold mt-2 mb-2">Prayer for Salvation</h2>
+          <h3 className="text-sm text-white/80 mb-5">Say These Words:</h3>
+          <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-5 mb-8 text-white/90 text-sm leading-relaxed italic">
             &ldquo;Dear Heavenly Father, I believe in Jesus Christ your son. I believe He
             died and was raised again for me. I believe He is alive today and I
             confess with my mouth, that from today, Jesus is the Lord of my life. I
             receive eternal life into my spirit. I am a child of God. I am born
             again. Glory to God!&rdquo;
           </div>
-          <p className="text-white/60 text-sm mb-6">
+          <p className="text-white/60 text-xs mb-5">
             If you said this prayer, we&apos;d love to hear from you. Fill in your details below:
           </p>
           <SalvationForm />
