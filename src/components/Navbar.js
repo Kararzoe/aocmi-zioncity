@@ -7,10 +7,13 @@ import SearchModal from "./SearchModal";
 
 const mainLinks = [
   { href: "/", label: "Home" },
-  { href: "/about-us", label: "About" },
-  { href: "/president", label: "Our Dear Man of God" },
   { href: "/our-messages", label: "Messages" },
+  { href: "/devotionals", label: "Apokalupsis" },
   { href: "/events", label: "Events" },
+  { href: "/about-us", label: "About" },
+];
+
+const mediaLinks = [
   { href: "/our-music", label: "Music" },
   { href: "/gallery", label: "Gallery" },
   { href: "/store", label: "Store" },
@@ -21,7 +24,6 @@ const moreLinks = [
   { href: "/testimonies", label: "Testimonies" },
   { href: "/healing-school", label: "Healing School" },
   { href: "/prayer-request", label: "Prayer Request" },
-  { href: "/devotionals", label: "Apokalupsis" },
 ];
 
 const socials = [
@@ -34,6 +36,7 @@ const socials = [
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [moreOpen, setMoreOpen] = useState(false);
+  const [mediaOpen, setMediaOpen] = useState(false);
   const [socialOpen, setSocialOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
@@ -48,6 +51,7 @@ export default function Navbar() {
   useEffect(() => {
     setOpen(false);
     setMoreOpen(false);
+    setMediaOpen(false);
     setSocialOpen(false);
   }, [pathname]);
 
@@ -87,7 +91,31 @@ export default function Navbar() {
             ))}
             <div className="relative">
               <button
-                onClick={() => setMoreOpen(!moreOpen)}
+                onClick={() => { setMediaOpen(!mediaOpen); setMoreOpen(false); }}
+                className="nav-link-item flex items-center gap-1"
+              >
+                Media <i className={`fas fa-chevron-down text-[10px] transition-transform ${mediaOpen ? "rotate-180" : ""}`} />
+              </button>
+              {mediaOpen && (
+                <>
+                  <div className="fixed inset-0" onClick={() => setMediaOpen(false)} />
+                  <div className="absolute top-full right-0 mt-2 bg-white rounded-xl shadow-xl py-2 min-w-[200px] border">
+                    {mediaLinks.map((l) => (
+                      <Link
+                        key={l.href}
+                        href={l.href}
+                        className="block px-4 py-2.5 text-sm text-gray-700 hover:bg-[#1a237e]/5 hover:text-[#1a237e] transition-colors"
+                      >
+                        {l.label}
+                      </Link>
+                    ))}
+                  </div>
+                </>
+              )}
+            </div>
+            <div className="relative">
+              <button
+                onClick={() => { setMoreOpen(!moreOpen); setMediaOpen(false); }}
                 className="nav-link-item flex items-center gap-1"
               >
                 More <i className={`fas fa-chevron-down text-[10px] transition-transform ${moreOpen ? "rotate-180" : ""}`} />
@@ -153,7 +181,7 @@ export default function Navbar() {
         {open && (
           <div className="lg:hidden bg-[#0a1128] border-t border-white/10 mt-2">
             <div className="max-w-7xl mx-auto px-4 py-4 space-y-1">
-              {[...mainLinks, ...moreLinks].map((l) => (
+              {[...mainLinks, ...mediaLinks, ...moreLinks].map((l) => (
                 <Link
                   key={l.href}
                   href={l.href}

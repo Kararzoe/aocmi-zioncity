@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function AboutPage() {
   return (
     <>
@@ -9,6 +11,22 @@ export default function AboutPage() {
         <span className="text-white/60 uppercase tracking-[0.2em] text-sm">Who We Are</span>
         <h1 className="text-4xl md:text-5xl font-bold mt-2">About Us</h1>
       </div>
+
+      {/* Our Dear Man of God Link */}
+      <section className="py-10 bg-white">
+        <div className="max-w-6xl mx-auto px-4 text-center">
+          <Link href="/president" className="inline-flex items-center gap-3 bg-gray-50 hover:bg-gray-100 px-6 py-4 rounded-2xl transition group">
+            <div className="w-12 h-12 rounded-full bg-[#1a237e]/10 flex items-center justify-center">
+              <i className="fas fa-user text-[#1a237e]" />
+            </div>
+            <div className="text-left">
+              <p className="font-bold text-sm">Our Dear Man of God</p>
+              <p className="text-gray-400 text-xs">Dr. Prince Buma — Founder & President</p>
+            </div>
+            <i className="fas fa-arrow-right text-gray-300 group-hover:text-[#1a237e] transition ml-3" />
+          </Link>
+        </div>
+      </section>
 
       <section className="py-16">
         <div className="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
