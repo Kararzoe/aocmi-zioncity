@@ -149,19 +149,17 @@ export default async function HomePage() {
             <span className="purple-text">Teachings</span>
             <h2 className="section-title mt-2">PPS Teachings</h2>
           </div>
-          <div className="max-w-2xl mx-auto">
-            <video
-              src="/videos/church-highlight.mp4"
-              controls
-              loop
-              playsInline
-              className="rounded-2xl w-full shadow-xl"
-            />
-            <div className="text-center mt-5">
-              <a href="https://youtube.com/@drprincebuma" target="_blank" className="bg-red-600 text-white px-6 py-2.5 rounded-full font-semibold text-xs inline-flex items-center gap-2 hover:bg-red-700 transition shadow-md">
-                <i className="fab fa-youtube" /> Watch More on YouTube
-              </a>
-            </div>
+          <div className="grid grid-cols-3 md:grid-cols-6 gap-2 md:gap-3">
+            {["/img/church-1.jpg","/img/church-2.jpg","/img/church-3.jpg","/img/church-4.jpg","/img/church-5.jpg","/img/church-6.jpg","/img/church-7.jpg","/img/church-8.jpg","/img/church-9.jpg","/img/church-10.jpg","/img/church-11.jpg","/img/church-12.jpg","/img/photo_2026-02-14_20-08-03.jpg","/img/photo_2026-02-14_20-08-04.jpg","/img/photo_2026-02-19_21-01-51.jpg","/img/photo_2026-02-19_21-01-52.jpg","/img/photo_2026-02-19_21-01-53.jpg","/img/photo_2026-02-26_21-36-17.jpg"].map((src) => (
+              <div key={src} className="overflow-hidden rounded-lg group">
+                <img src={src} alt="PPS" className="w-full h-20 md:h-24 object-cover group-hover:scale-110 transition-transform duration-500" />
+              </div>
+            ))}
+          </div>
+          <div className="text-center mt-6">
+            <a href="https://youtube.com/@drprincebuma" target="_blank" className="bg-red-600 text-white px-6 py-2.5 rounded-full font-semibold text-xs inline-flex items-center gap-2 hover:bg-red-700 transition shadow-md">
+              <i className="fab fa-youtube" /> Watch on YouTube
+            </a>
           </div>
         </div>
       </section>
