@@ -89,7 +89,7 @@ export default function Navbar() {
       </div>
 
       {open && (
-        <div className="lg:hidden bg-[#0a1128] border-t border-white/10 mt-2 max-h-[80vh] overflow-y-auto">
+        <div className="lg:hidden bg-[#0a1128] border-t border-white/10 mt-2 max-h-[80vh] overflow-y-auto absolute top-full left-0 right-0 z-50 shadow-2xl">
           <div className="max-w-7xl mx-auto px-4 py-4 space-y-1">
             {navLinks.map((l) => (
               <Link
