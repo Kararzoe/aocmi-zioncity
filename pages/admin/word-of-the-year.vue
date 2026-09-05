@@ -1,0 +1,39 @@
+<template>
+  <div>
+    <h2 class="text-2xl font-bold mb-6">Word of the Year</h2>
+    <div v-if="current" class="bg-white p-4 rounded-lg shadow mb-6 flex gap-4 items-center max-w-xl">
+      <img :src="`/img/${current.img}`" class="w-20 h-20 object-cover rounded-lg" />
+      <div>
+        <p class="font-bold">{{ current.title }}</p>
+        <p class="text-gray-500 text-sm">{{ current.description }}</p>
+      </div>
+    </div>
+    <p v-else class="text-gray-400 mb-6">No word of the year set yet.</p>
+    <form @submit.prevent="submit" class="bg-white p-6 rounded-lg shadow space-y-4 max-w-xl">
+      <p class="text-sm text-gray-500">Submitting will replace the current word of the year.</p>
+      <input name="title" placeholder="Title" required class="w-full border p-3 rounded" />
+      <textarea name="description" placeholder="Description" required rows="3" class="w-full border p-3 rounded" />
+      <div>
+        <label class="block text-sm mb-1">Image</label>
+        <input name="img" type="file" accept="image/*" required class="w-full" />
+      </div>
+      <button :disabled="loading" class="bg-primary text-white px-6 py-3 rounded disabled:opacity-50">
+        {{ loading ? 'Saving...' : 'Save' }}
+      </button>
+    </form>
+  </div>
+</template>
+
+<script setup>
+definePageMeta({ layout: 'admin' })
+const loading = ref(false)
+const { data: current, refresh } = await useFetch('/api/word-of-the-year')
+
+const submit = async (e) => {
+  loading.value = true
+  await $fetch('/api/word-of-the-year', { method: 'POST', body: new FormData(e.target) })
+  loading.value = false
+  refresh()
+}
+useHead({ title: 'Admin — Word of the Year' })
+</script>

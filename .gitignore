@@ -1,0 +1,26 @@
+# Nuxt
+.nuxt/
+.output/
+.nitro/
+.cache/
+
+# Node
+node_modules/
+
+# Env
+.env
+.env.*
+!.env.example
+
+# Prisma
+prisma/migrations/
+
+# Uploads (local only)
+public/uploads/
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
