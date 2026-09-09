@@ -2,7 +2,7 @@
   <div>
     <h2 class="text-2xl font-bold mb-6">Word of the Year</h2>
     <div v-if="current" class="bg-white p-4 rounded-lg shadow mb-6 flex gap-4 items-center max-w-xl">
-      <img :src="`/img/${current.img}`" class="w-20 h-20 object-cover rounded-lg" />
+      <img :src="current.img" class="w-20 h-20 object-cover rounded-lg" />
       <div>
         <p class="font-bold">{{ current.title }}</p>
         <p class="text-gray-500 text-sm">{{ current.description }}</p>

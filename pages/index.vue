@@ -133,7 +133,7 @@
     <section v-if="wordOfTheYear" class="py-16">
       <div class="max-w-5xl mx-auto px-4 grid md:grid-cols-5 gap-8 items-center">
         <div class="md:col-span-3">
-          <img :src="`/img/${wordOfTheYear.img}`" alt="Word of the Year" class="rounded-2xl w-full shadow-xl" />
+          <img :src="wordOfTheYear.img" alt="Word of the Year" class="rounded-2xl w-full shadow-xl" />
         </div>
         <div class="md:col-span-2">
           <span class="purple-text">Prophetic Declaration</span>
@@ -217,15 +217,16 @@
 <script setup>
 const { data: msgData } = await useFetch('/api/messages?page=1')
 const { data: wordData } = await useFetch('/api/word-of-the-year')
+const { data: galleryData } = await useFetch('/api/gallery')
 
 const messages = computed(() => msgData.value?.messages?.slice(0, 6) || [])
 const wordOfTheYear = computed(() => wordData.value)
+const galleryImages = computed(() => (galleryData.value?.photos || []).slice(0, 8).map(p => p.img))
 
 const serviceTimes = [
   { icon: 'fa-sun', color: 'text-yellow-500 bg-yellow-50', title: 'Sunday Service', time: '9:00 AM WAT' },
   { icon: 'fa-pray', color: 'text-purple-500 bg-purple-50', title: 'Prayer Meeting', time: 'Friday 5:00 PM' },
 ]
-const galleryImages = ['/img/church-5.jpg', '/img/church-6.jpg', '/img/church-7.jpg', '/img/church-8.jpg', '/img/church-9.jpg', '/img/church-10.jpg', '/img/church-11.jpg', '/img/church-12.jpg']
 const followLinks = [
   { href: 'https://youtube.com/@aocmizioncity', icon: 'fa-youtube', label: 'YouTube', colors: 'bg-red-50 text-red-500' },
   { href: 'https://instagram.com/aocmizioncity', icon: 'fa-instagram', label: 'Instagram', colors: 'bg-pink-50 text-pink-500' },
