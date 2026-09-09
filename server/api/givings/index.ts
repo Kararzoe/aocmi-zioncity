@@ -14,6 +14,12 @@ export default defineEventHandler(async (event) => {
     const get = (k: string) => form.find(f => f.name === k)
     const phone = get('phone')?.data.toString() || ''
     const email = get('email')?.data.toString() || ''
+    const bank1Name = get('bank1Name')?.data.toString() || ''
+    const bank1AccountName = get('bank1AccountName')?.data.toString() || ''
+    const bank1AccountNumber = get('bank1AccountNumber')?.data.toString() || ''
+    const bank2Name = get('bank2Name')?.data.toString() || ''
+    const bank2AccountName = get('bank2AccountName')?.data.toString() || ''
+    const bank2AccountNumber = get('bank2AccountNumber')?.data.toString() || ''
     const img1File = get('image1')
     const img2File = get('image2')
 
@@ -25,6 +31,6 @@ export default defineEventHandler(async (event) => {
     if (img2File?.filename) image2 = await saveFile({ arrayBuffer: async () => img2File.data.buffer, name: img2File.filename! }, 'givings')
 
     await prisma.givingDetail.deleteMany()
-    return prisma.givingDetail.create({ data: { phone, email, image1, image2 } })
+    return prisma.givingDetail.create({ data: { phone, email, image1, image2, bank1Name, bank1AccountName, bank1AccountNumber, bank2Name, bank2AccountName, bank2AccountNumber } })
   }
 })

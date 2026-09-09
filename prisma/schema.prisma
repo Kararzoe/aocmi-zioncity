@@ -207,13 +207,19 @@ model Testimony {
 }
 
 model GivingDetail {
-  id        Int      @id @default(autoincrement())
-  phone     String   @default("")
-  email     String   @default("")
-  image1    String   @default("")
-  image2    String   @default("")
-  createdAt DateTime @default(now()) @map("created_at")
-  updatedAt DateTime @updatedAt @map("updated_at")
+  id                 Int      @id @default(autoincrement())
+  phone              String   @default("")
+  email              String   @default("")
+  image1             String   @default("")
+  image2             String   @default("")
+  bank1Name          String   @default("") @map("bank1_name")
+  bank1AccountName   String   @default("") @map("bank1_account_name")
+  bank1AccountNumber String   @default("") @map("bank1_account_number")
+  bank2Name          String   @default("") @map("bank2_name")
+  bank2AccountName   String   @default("") @map("bank2_account_name")
+  bank2AccountNumber String   @default("") @map("bank2_account_number")
+  createdAt          DateTime @default(now()) @map("created_at")
+  updatedAt          DateTime @updatedAt @map("updated_at")
   @@map("giving_details")
 }
 
