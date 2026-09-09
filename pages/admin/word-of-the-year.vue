@@ -1,18 +1,12 @@
 <template>
   <div>
     <h2 class="text-2xl font-bold mb-6">Word of the Year</h2>
-    <div v-if="current" class="bg-white p-4 rounded-lg shadow mb-6 flex gap-4 items-center max-w-xl">
-      <img :src="current.img" class="w-20 h-20 object-cover rounded-lg" />
-      <div>
-        <p class="font-bold">{{ current.title }}</p>
-        <p class="text-gray-500 text-sm">{{ current.description }}</p>
-      </div>
+    <div v-if="current" class="bg-white p-4 rounded-lg shadow mb-6 max-w-xl">
+      <img :src="current.img" class="w-full rounded-lg" />
     </div>
     <p v-else class="text-gray-400 mb-6">No word of the year set yet.</p>
     <form @submit.prevent="submit" class="bg-white p-6 rounded-lg shadow space-y-4 max-w-xl">
       <p class="text-sm text-gray-500">Submitting will replace the current word of the year.</p>
-      <input name="title" placeholder="Title" required class="w-full border p-3 rounded" />
-      <textarea name="description" placeholder="Description" required rows="3" class="w-full border p-3 rounded" />
       <div>
         <label class="block text-sm mb-1">Image</label>
         <input name="img" type="file" accept="image/*" required class="w-full" />
