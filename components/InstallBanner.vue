@@ -19,10 +19,13 @@ const show = ref(false)
 let deferredPrompt = null
 
 onMounted(() => {
+  // Show banner if not already dismissed
+  const dismissed = sessionStorage.getItem('pwa-banner-dismissed')
+  if (!dismissed) show.value = true
+
   window.addEventListener('beforeinstallprompt', (e) => {
     e.preventDefault()
     deferredPrompt = e
-    show.value = true
   })
 })
 
@@ -37,5 +40,6 @@ const install = async () => {
 const dismiss = () => {
   show.value = false
   deferredPrompt = null
+  sessionStorage.setItem('pwa-banner-dismissed', '1')
 }
 </script>

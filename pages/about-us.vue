@@ -84,8 +84,8 @@
           </div>
           <div class="md:w-2/3 p-6 md:p-8 flex flex-col justify-center">
             <span class="text-[#7c3aed] text-xs font-semibold uppercase tracking-wider">Founder & President</span>
-            <h3 class="text-2xl md:text-3xl font-bold mt-1 mb-3">Dr. Prince Buma</h3>
-            <p class="text-gray-500 text-sm leading-relaxed mb-4">Dr. Prince Buma is the founder and president of Ambassadors of Christ Ministries International (AOCMI).</p>
+            <h3 class="text-2xl md:text-3xl font-bold mt-1 mb-3">Pastor Prince Buma</h3>
+            <p class="text-gray-500 text-sm leading-relaxed mb-4">Pastor Prince Buma is the founder and president of Ambassadors of Christ Ministries International (AOCMI).</p>
             <NuxtLink to="/president" class="btn-blue text-xs inline-block w-fit">Read More &nbsp;<i class="fas fa-arrow-right text-[10px]" /></NuxtLink>
           </div>
         </div>
