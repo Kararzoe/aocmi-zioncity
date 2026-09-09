@@ -30,7 +30,10 @@ onMounted(() => {
 })
 
 const install = async () => {
-  if (!deferredPrompt) return
+  if (!deferredPrompt) {
+    alert('To install: tap the Share button then "Add to Home Screen"')
+    return
+  }
   deferredPrompt.prompt()
   const { outcome } = await deferredPrompt.userChoice
   if (outcome === 'accepted') show.value = false
