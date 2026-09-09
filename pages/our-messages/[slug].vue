@@ -5,7 +5,7 @@
       <h1 class="text-3xl md:text-4xl font-bold mt-2 max-w-3xl mx-auto px-4">{{ message?.title }}</h1>
     </div>
     <div v-if="message" class="max-w-3xl mx-auto px-4 py-12">
-      <img :src="`/uploads/messages/${message.image}`" :alt="message.title" class="rounded-2xl w-full shadow-xl mb-8 object-cover max-h-80" />
+      <img :src="message.image" :alt="message.title" class="rounded-2xl w-full shadow-xl mb-8 object-cover max-h-80" />
       <span v-if="message.series" class="text-xs text-purple-600 bg-purple-50 px-3 py-1 rounded-full mb-4 inline-block">{{ message.series.title }}</span>
       <p class="text-gray-500 text-sm leading-relaxed mb-8">{{ message.description }}</p>
       <a :href="message.link" target="_blank"

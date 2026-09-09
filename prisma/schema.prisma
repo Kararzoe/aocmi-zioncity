@@ -206,6 +206,17 @@ model Testimony {
   @@map("testimonies")
 }
 
+model GivingDetail {
+  id        Int      @id @default(autoincrement())
+  phone     String   @default("")
+  email     String   @default("")
+  image1    String   @default("")
+  image2    String   @default("")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+  @@map("giving_details")
+}
+
 model Newsletter {
   id        Int      @id @default(autoincrement())
   email     String   @unique

@@ -14,7 +14,7 @@
         <NuxtLink v-for="m in musics" :key="m.id" :to="`/our-music/${m.slug}`" class="messages-link group">
           <div class="card-hover bg-white">
             <div class="overflow-hidden relative">
-              <img :src="`/uploads/music-cover-arts/${m.img}`" :alt="m.title"
+              <img :src="m.img" :alt="m.title"
                 class="w-full h-44 object-cover group-hover:scale-105 transition-transform duration-500" />
               <div class="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
                 <div class="w-12 h-12 rounded-full bg-white/90 flex items-center justify-center">

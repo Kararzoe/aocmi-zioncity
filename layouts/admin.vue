@@ -55,6 +55,8 @@ const adminLinks = [
   { href: '/admin/store', label: 'Store', icon: 'fa-book' },
   { href: '/admin/music', label: 'Music', icon: 'fa-music' },
   { href: '/admin/word-of-the-year', label: 'Word of the Year', icon: 'fa-star' },
+  { href: '/admin/givings', label: 'Givings', icon: 'fa-hand-holding-heart' },
+  { href: '/admin/devotionals', label: 'Devotionals', icon: 'fa-book-open' },
   { href: '/admin/workers', label: 'Workers', icon: 'fa-user' },
   { href: '/admin/gallery', label: 'Gallery', icon: 'fa-images' },
   { href: '/admin/prayer-requests', label: 'Prayer Requests', icon: 'fa-pray' },

@@ -13,7 +13,7 @@
         <NuxtLink v-for="d in devotionals" :key="d.id" :to="`/devotionals/${d.slug}`" class="messages-link group">
           <div class="card-hover bg-white">
             <div v-if="d.image" class="overflow-hidden">
-              <img :src="`/uploads/devotionals/${d.image}`" :alt="d.title" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500" />
+              <img :src="d.image" :alt="d.title" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500" />
             </div>
             <div class="p-5">
               <p v-if="d.scripture" class="text-xs text-[#7c3aed] font-semibold mb-2">{{ d.scripture }}</p>

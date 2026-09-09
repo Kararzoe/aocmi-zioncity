@@ -6,7 +6,7 @@
     </div>
     <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
       <div v-for="s in stores" :key="s.id" class="bg-white rounded-lg shadow overflow-hidden">
-        <img :src="`/uploads/store/${s.img}`" :alt="s.title" class="w-full h-32 object-cover" />
+        <img :src="s.img" :alt="s.title" class="w-full h-32 object-cover" />
         <div class="p-3">
           <p class="text-sm font-medium truncate">{{ s.title }}</p>
           <button @click="del(s.id)" class="text-red-500 text-xs mt-1">Delete</button>

@@ -37,7 +37,7 @@
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
           <div v-for="s in stores" :key="s.id" class="card-hover bg-white group">
             <div class="overflow-hidden">
-              <img :src="`/uploads/store/${s.img}`" :alt="s.title" class="w-full h-44 object-cover group-hover:scale-105 transition-transform duration-500" />
+              <img :src="s.img" :alt="s.title" class="w-full h-44 object-cover group-hover:scale-105 transition-transform duration-500" />
             </div>
             <div class="p-5">
               <h3 class="font-bold text-sm mb-3">{{ s.title }}</h3>

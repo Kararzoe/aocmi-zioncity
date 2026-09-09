@@ -18,13 +18,13 @@
         </div>
         <div class="bg-[#1a237e] text-white p-8 rounded-2xl">
           <h3 class="text-xl font-bold mb-6">Bank Account Details</h3>
-          <div class="grid md:grid-cols-2 gap-4 mb-6">
-            <img src="/img/giving-1.jpg" alt="Account Details" class="rounded-xl w-full" />
-            <img src="/img/giving-2.jpg" alt="Account Details" class="rounded-xl w-full" />
+          <div v-if="givings" class="grid md:grid-cols-2 gap-4 mb-6">
+            <img v-if="givings.image1" :src="givings.image1" alt="Account Details" class="rounded-xl w-full" />
+            <img v-if="givings.image2" :src="givings.image2" alt="Account Details" class="rounded-xl w-full" />
           </div>
           <p class="text-white/70 text-sm">For enquiries, contact:</p>
-          <p class="text-lg font-bold">+234 902 729 3178</p>
-          <p class="text-white/70">hello@aocmi.com</p>
+          <p class="text-lg font-bold">{{ givings?.phone || '+234 902 729 3178' }}</p>
+          <p class="text-white/70">{{ givings?.email || 'hello@aocmi.com' }}</p>
         </div>
       </div>
     </section>
@@ -32,6 +32,8 @@
 </template>
 
 <script setup>
+const { data: givingsData } = await useFetch('/api/givings')
+const givings = computed(() => givingsData.value)
 const givingTypes = [
   { icon: 'fa-church', title: 'Tithes & Offerings', desc: 'Support the work of the ministry' },
   { icon: 'fa-hand-holding-heart', title: 'Special Seeds', desc: 'Sow into specific projects and missions' },

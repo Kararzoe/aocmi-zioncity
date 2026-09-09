@@ -108,7 +108,7 @@
           <NuxtLink v-for="m in messages" :key="m.id" :to="`/our-messages/${m.slug}`" class="messages-link group">
             <div class="card-hover bg-white text-gray-800">
               <div class="overflow-hidden">
-                <img :src="`/uploads/messages/${m.image}`" :alt="m.title"
+                <img :src="m.image" :alt="m.title"
                   class="w-full h-32 md:h-40 object-cover group-hover:scale-105 transition-transform duration-500" />
               </div>
               <div class="p-4">
