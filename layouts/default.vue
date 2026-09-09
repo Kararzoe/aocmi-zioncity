@@ -8,5 +8,6 @@
     <TheFooter />
     <BackToTop />
     <ToastContainer />
+    <InstallBanner />
   </div>
 </template>
