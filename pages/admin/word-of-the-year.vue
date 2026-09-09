@@ -20,6 +20,8 @@
       <button :disabled="loading" class="bg-primary text-white px-6 py-3 rounded disabled:opacity-50">
         {{ loading ? 'Saving...' : 'Save' }}
       </button>
+      <p v-if="error" class="text-red-500 text-sm">{{ error }}</p>
+      <p v-if="success" class="text-green-600 text-sm">Saved successfully!</p>
     </form>
   </div>
 </template>
@@ -29,11 +31,22 @@ definePageMeta({ layout: 'admin' })
 const loading = ref(false)
 const { data: current, refresh } = await useFetch('/api/word-of-the-year')
 
+const error = ref('')
+const success = ref(false)
+
 const submit = async (e) => {
   loading.value = true
-  await $fetch('/api/word-of-the-year', { method: 'POST', body: new FormData(e.target) })
-  loading.value = false
-  refresh()
+  error.value = ''
+  success.value = false
+  try {
+    await $fetch('/api/word-of-the-year', { method: 'POST', body: new FormData(e.target) })
+    success.value = true
+    refresh()
+  } catch (err) {
+    error.value = err?.data?.message || err?.message || 'Something went wrong'
+  } finally {
+    loading.value = false
+  }
 }
 useHead({ title: 'Admin — Word of the Year' })
 </script>
