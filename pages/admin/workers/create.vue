@@ -11,6 +11,7 @@
       <button :disabled="loading" class="bg-primary text-white px-6 py-3 rounded disabled:opacity-50">
         {{ loading ? 'Saving...' : 'Save Worker' }}
       </button>
+      <p v-if="err" class="text-red-500 text-sm">{{ err }}</p>
     </form>
   </div>
 </template>

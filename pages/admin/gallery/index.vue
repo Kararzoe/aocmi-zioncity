@@ -6,7 +6,7 @@
     </div>
     <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
       <div v-for="p in photos" :key="p.id" class="bg-white rounded-lg shadow overflow-hidden">
-        <img :src="`/uploads/gallery/${p.img}`" :alt="p.title" class="w-full h-32 object-cover" />
+        <img :src="p.img" :alt="p.title" class="w-full h-32 object-cover" />
         <div class="p-2">
           <p class="text-sm font-medium truncate">{{ p.title }}</p>
           <p class="text-xs text-gray-400">{{ p.category }}</p>

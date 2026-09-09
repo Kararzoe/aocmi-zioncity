@@ -16,6 +16,7 @@
       <button :disabled="loading" class="bg-primary text-white px-6 py-3 rounded disabled:opacity-50">
         {{ loading ? 'Uploading...' : 'Upload' }}
       </button>
+      <p v-if="err" class="text-red-500 text-sm">{{ err }}</p>
     </form>
   </div>
 </template>
@@ -23,13 +24,18 @@
 <script setup>
 definePageMeta({ layout: 'admin' })
 const loading = ref(false)
+const err = ref('')
 
 const submit = async (e) => {
   loading.value = true
+  err.value = ''
   try {
     await $fetch('/api/gallery', { method: 'POST', body: new FormData(e.target) })
     await navigateTo('/admin/gallery')
-  } catch { loading.value = false }
+  } catch (e) {
+    err.value = e.data?.message || 'Upload failed'
+    loading.value = false
+  }
 }
 useHead({ title: 'Upload Photos' })
 </script>
