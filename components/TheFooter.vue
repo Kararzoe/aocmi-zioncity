@@ -1,16 +1,5 @@
 <template>
   <footer class="bg-[#0a1128] text-white">
-    <div class="bg-[#1a237e]">
-      <div class="max-w-7xl mx-auto px-4 py-10 md:flex items-center justify-between gap-8">
-        <div class="mb-4 md:mb-0">
-          <h3 class="text-xl font-bold">Stay Connected</h3>
-          <p class="text-white/70 text-sm">Get updates on events, messages and more</p>
-        </div>
-        <div class="flex-1 max-w-md">
-          <NewsletterForm />
-        </div>
-      </div>
-    </div>
     <div class="max-w-7xl mx-auto px-4 py-12">
       <div class="grid md:grid-cols-4 gap-10">
         <div>
