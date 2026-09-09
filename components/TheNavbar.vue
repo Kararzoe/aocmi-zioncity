@@ -2,7 +2,7 @@
   <nav :class="['fixed top-0 left-0 right-0 z-50 transition-all duration-300', scrolled ? 'bg-[#0a1128]/95 backdrop-blur-md shadow-lg py-2' : 'bg-transparent py-3']">
     <div class="max-w-7xl mx-auto px-4 flex items-center justify-between">
       <NuxtLink to="/" class="shrink-0">
-        <img src="/img/logo.png" alt="AOCMI" class="h-10 md:h-12 w-auto" />
+        <img src="/img/logo.png" alt="AOCMI" class="h-16 md:h-20 w-auto" />
       </NuxtLink>
 
       <div class="hidden lg:flex items-center gap-8">
