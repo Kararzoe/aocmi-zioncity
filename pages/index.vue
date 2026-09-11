@@ -62,26 +62,20 @@
 
     <!-- Join Online -->
     <section class="py-16 bg-gray-50">
-      <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-10 items-center">
-        <div>
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="text-center">
           <span class="purple-text">Online</span>
           <h2 class="text-2xl md:text-3xl font-bold my-3">Join Our Service Online</h2>
-          <p class="text-gray-500 text-sm mb-6 leading-relaxed">
+          <p class="text-gray-500 text-sm mb-6 leading-relaxed max-w-xl mx-auto">
             Join us for powerful worship experience and practical teachings of God's word like never before.
           </p>
-          <div class="flex flex-wrap gap-3">
+          <div class="flex flex-wrap gap-3 justify-center">
             <a href="https://youtube.com/@aocmizioncity" target="_blank"
               class="bg-red-600 text-white px-5 py-2.5 rounded-full font-semibold text-xs inline-flex items-center gap-2 hover:bg-red-700 transition shadow-md">
               <i class="fab fa-youtube" /> YouTube
             </a>
             <NuxtLink to="/events" class="btn-blue text-xs">Upcoming Events</NuxtLink>
           </div>
-        </div>
-        <div class="grid grid-cols-2 gap-3">
-          <img src="/img/church-1.jpg" alt="Service" loading="lazy" class="rounded-xl w-full h-40 object-cover shadow-md" />
-          <img src="/img/church-2.jpg" alt="Service" loading="lazy" class="rounded-xl w-full h-40 object-cover shadow-md mt-6" />
-          <img src="/img/church-3.jpg" alt="Service" loading="lazy" class="rounded-xl w-full h-40 object-cover shadow-md -mt-6" />
-          <img src="/img/church-4.jpg" alt="Service" loading="lazy" class="rounded-xl w-full h-40 object-cover shadow-md" />
         </div>
       </div>
     </section>
