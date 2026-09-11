@@ -24,7 +24,7 @@
         </NuxtLink>
       </div>
       <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-        <NuxtLink v-for="m in messages" :key="m.id" :to="`/our-messages/${m.slug}`" class="messages-link group">
+        <a v-for="m in messages" :key="m.id" :href="m.link" target="_blank" class="messages-link group">
           <div class="card-hover bg-white">
             <div class="overflow-hidden">
               <img :src="m.image" :alt="m.title"
@@ -37,7 +37,7 @@
               <span class="text-[#1a237e] text-xs font-semibold group-hover:underline">Listen Now →</span>
             </div>
           </div>
-        </NuxtLink>
+        </a>
       </div>
       <p v-if="!messages.length" class="text-center text-gray-400 mt-8">No messages found.</p>
       <Pagination :pages="pages" :current="page" />

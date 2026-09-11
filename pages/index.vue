@@ -105,7 +105,7 @@
           <h2 class="text-2xl md:text-3xl font-bold mt-2">Download & Listen to Our Latest Messages</h2>
         </div>
         <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-5">
-          <NuxtLink v-for="m in messages" :key="m.id" :to="`/our-messages/${m.slug}`" class="messages-link group">
+          <a v-for="m in messages" :key="m.id" :href="m.link" target="_blank" class="messages-link group">
             <div class="card-hover bg-white text-gray-800">
               <div class="overflow-hidden">
                 <img :src="m.image" :alt="m.title" loading="lazy"
@@ -117,7 +117,7 @@
                 <span class="text-[#1a237e] text-[10px] md:text-xs font-semibold group-hover:underline">Listen Now →</span>
               </div>
             </div>
-          </NuxtLink>
+          </a>
           <p v-if="!messages.length" class="col-span-3 text-center text-white/60">No messages uploaded yet</p>
         </div>
         <div class="text-center mt-8 flex flex-col sm:flex-row gap-3 justify-center">
