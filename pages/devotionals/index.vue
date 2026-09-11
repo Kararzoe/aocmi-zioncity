@@ -8,24 +8,34 @@
 
       <!-- Church Account Details -->
       <div class="max-w-xl mx-auto mb-12">
-        <div class="rounded-2xl overflow-hidden shadow-lg border border-gray-100">
-          <div class="px-6 py-4 text-white font-bold tracking-wide" style="background: linear-gradient(135deg, #00843D, #00a84f)">
-            <p class="text-xs text-white/70 uppercase tracking-widest mb-1">Church Account Details</p>
-            <p class="text-lg">Sterling Bank</p>
+        <div class="rounded-2xl overflow-hidden shadow-lg border border-gray-100" style="opacity:0;animation:slideUp 0.5s ease forwards">
+          <div class="px-6 py-5 text-white flex items-center justify-between" style="background: linear-gradient(135deg, #00843D, #00a84f)">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
+                <i class="fas fa-university text-white" />
+              </div>
+              <div>
+                <p class="text-xs text-white/70 uppercase tracking-widest">Church Account Details</p>
+                <p class="font-bold text-lg">Sterling Bank</p>
+              </div>
+            </div>
+            <div class="text-white/20 text-5xl font-black">SB</div>
           </div>
           <div class="bg-white px-6 py-5 space-y-3">
             <div class="flex justify-between items-center border-b border-gray-100 pb-3">
               <span class="text-gray-400 text-xs">Account Name</span>
               <span class="font-bold text-sm">AOCMI ZION CITY (APOKALUPSIS)</span>
             </div>
-            <div class="flex justify-between items-center border-b border-gray-100 pb-3">
-              <span class="text-gray-400 text-xs">Naira Account</span>
-              <span class="font-mono font-bold text-[#1a237e] text-xl tracking-widest">0512611610</span>
+            <div class="flex justify-between items-center gap-3">
+              <div>
+                <p class="text-gray-400 text-xs mb-1">Naira Account</p>
+                <p class="font-mono font-bold text-[#1a237e] text-xl tracking-widest">0512611610</p>
+              </div>
+              <button @click="copy('0512611610')" class="flex items-center gap-1.5 bg-gray-50 hover:bg-[#1a237e] hover:text-white text-gray-500 text-xs font-semibold px-3 py-2 rounded-xl transition-all duration-200 shrink-0">
+                <i :class="copied ? 'fas fa-check text-green-500' : 'fas fa-copy'" />
+                <span>{{ copied ? 'Copied!' : 'Copy' }}</span>
+              </button>
             </div>
-            <button @click="copy('0512611610')" class="flex items-center gap-1.5 bg-gray-50 hover:bg-[#1a237e] hover:text-white text-gray-500 text-xs font-semibold px-3 py-2 rounded-xl transition-all duration-200">
-              <i :class="copied ? 'fas fa-check text-green-500' : 'fas fa-copy'" />
-              <span>{{ copied ? 'Copied!' : 'Copy Account Number' }}</span>
-            </button>
           </div>
         </div>
       </div>
@@ -60,3 +70,10 @@ const copy = (text) => {
 }
 useHead({ title: 'Apokalupsis — Devotionals' })
 </script>
+
+<style scoped>
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+</style>
