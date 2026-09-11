@@ -223,6 +223,18 @@ model GivingDetail {
   @@map("giving_details")
 }
 
+model News {
+  id        Int      @id @default(autoincrement())
+  title     String
+  body      String
+  image     String   @default("")
+  link      String   @default("")
+  published Boolean  @default(true)
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+  @@map("news")
+}
+
 model Newsletter {
   id        Int      @id @default(autoincrement())
   email     String   @unique

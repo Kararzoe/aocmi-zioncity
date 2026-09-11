@@ -146,6 +146,30 @@
       </div>
     </section>
 
+    <!-- News -->
+    <section v-if="news.length" class="py-16">
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="text-center mb-8">
+          <span class="purple-text">Latest Updates</span>
+          <h2 class="section-title mt-2">News & Updates</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <div v-for="n in news" :key="n.id" class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition">
+            <img v-if="n.image" :src="n.image" :alt="n.title" class="w-full h-44 object-cover" loading="lazy" />
+            <div class="p-5">
+              <p class="text-[10px] text-gray-400 mb-1">{{ new Date(n.createdAt).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }) }}</p>
+              <h3 class="font-bold text-sm mb-2">{{ n.title }}</h3>
+              <p class="text-gray-500 text-xs leading-relaxed mb-3">{{ n.body.length > 100 ? n.body.slice(0, 100) + '...' : n.body }}</p>
+              <a v-if="n.link" :href="n.link" target="_blank" class="text-[#1a237e] text-xs font-semibold hover:underline">Read More →</a>
+            </div>
+          </div>
+        </div>
+        <div class="text-center mt-7">
+          <NuxtLink to="/news" class="btn-blue text-xs">View All News &nbsp;<i class="fas fa-arrow-right text-[10px]" /></NuxtLink>
+        </div>
+      </div>
+    </section>
+
     <!-- Gallery -->
     <section class="py-16 bg-gray-50">
       <div class="max-w-6xl mx-auto px-4">
@@ -220,10 +244,12 @@
 const { data: msgData } = useFetch('/api/messages?page=1')
 const { data: wordData } = useFetch('/api/word-of-the-year')
 const { data: galleryData } = useFetch('/api/gallery')
+const { data: newsData } = useFetch('/api/news?page=1')
 
 const messages = computed(() => msgData.value?.messages?.slice(0, 6) || [])
 const wordOfTheYear = computed(() => wordData.value)
 const galleryImages = computed(() => (galleryData.value?.photos || []).slice(0, 8).map(p => p.img))
+const news = computed(() => newsData.value?.news?.slice(0, 3) || [])
 
 const serviceTimes = [
   { icon: 'fa-sun', color: 'text-yellow-500 bg-yellow-50', title: 'Sunday Service', time: '9:00 AM WAT' },
