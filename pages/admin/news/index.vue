@@ -9,6 +9,7 @@
         <thead class="bg-gray-50">
           <tr>
             <th class="p-3 text-left">Title</th>
+            <th class="p-3 text-left">Type</th>
             <th class="p-3 text-left">Date</th>
             <th class="p-3 text-left">Actions</th>
           </tr>
@@ -16,6 +17,7 @@
         <tbody>
           <tr v-for="n in news" :key="n.id" class="border-t">
             <td class="p-3">{{ n.title }}</td>
+            <td class="p-3 capitalize">{{ n.type }}</td>
             <td class="p-3">{{ new Date(n.createdAt).toLocaleDateString() }}</td>
             <td class="p-3">
               <button @click="del(n.id)" class="text-red-500 text-xs">Delete</button>

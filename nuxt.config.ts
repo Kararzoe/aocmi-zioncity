@@ -30,7 +30,12 @@ export default defineNuxtConfig({
   runtimeConfig: {
     jwtSecret: process.env.JWT_SECRET || 'aocmi-zioncity-secret-key-2024',
     adminDefaultPassword: process.env.ADMIN_DEFAULT_PASSWORD || 'password',
-    public: {},
+    vapidPublicKey: process.env.VAPID_PUBLIC_KEY || '',
+    vapidPrivateKey: process.env.VAPID_PRIVATE_KEY || '',
+    vapidEmail: process.env.VAPID_EMAIL || '',
+    public: {
+      vapidPublicKey: process.env.VAPID_PUBLIC_KEY || '',
+    },
   },
   nitro: {
     experimental: { wasm: false },

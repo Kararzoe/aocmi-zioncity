@@ -229,10 +229,21 @@ model News {
   body      String
   image     String   @default("")
   link      String   @default("")
+  type      String   @default("news") // news | event | fast | program
+  eventDate DateTime?
   published Boolean  @default(true)
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
   @@map("news")
+}
+
+model PushSubscription {
+  id       Int    @id @default(autoincrement())
+  endpoint String @unique
+  p256dh   String
+  auth     String
+  createdAt DateTime @default(now()) @map("created_at")
+  @@map("push_subscriptions")
 }
 
 model Newsletter {
