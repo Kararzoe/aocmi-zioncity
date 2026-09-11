@@ -7,18 +7,13 @@
 
     <section class="py-16">
       <div class="max-w-3xl mx-auto px-4">
-        <p class="text-gray-500 text-center text-lg leading-relaxed mb-10">
-          There's no telling what impact you will make as you join us in partnership with God to take the gospel to the ends of the earth.
-        </p>
 
-        <div class="grid md:grid-cols-2 gap-6 mb-12">
-          <div v-for="g in givingTypes" :key="g.title"
-            class="bg-gray-50 p-8 rounded-2xl text-center hover:shadow-lg transition-shadow duration-300">
-            <div class="w-14 h-14 rounded-full bg-[#1a237e]/10 flex items-center justify-center mx-auto mb-4">
-              <i :class="`fas ${g.icon} text-[#1a237e] text-xl`" />
+        <div class="flex justify-center mb-8">
+          <div class="flex items-center gap-3 bg-gray-50 px-8 py-4 rounded-2xl">
+            <div class="w-10 h-10 rounded-full bg-[#1a237e]/10 flex items-center justify-center">
+              <i class="fas fa-church text-[#1a237e]" />
             </div>
-            <h3 class="font-bold text-lg mb-2">{{ g.title }}</h3>
-            <p class="text-gray-500 text-sm">{{ g.desc }}</p>
+            <h3 class="font-bold text-lg">Tithes &amp; Offerings</h3>
           </div>
         </div>
 
@@ -132,10 +127,6 @@ const gtbAccounts = [
   { currency: 'GBP', label: 'British Pounds', number: '0624634280' },
   { currency: 'EUR', label: 'Euro', number: '0624634273' },
   { currency: 'USD', label: 'US Dollar', number: '0624634266' },
-]
-const givingTypes = [
-  { icon: 'fa-church', title: 'Tithes & Offerings', desc: 'Support the work of the ministry' },
-  { icon: 'fa-hand-holding-heart', title: 'Special Seeds', desc: 'Sow into specific projects and missions' },
 ]
 useHead({ title: 'Givings' })
 </script>
