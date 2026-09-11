@@ -28,24 +28,32 @@
             class="bg-red-600 text-white px-7 py-3 rounded-full font-semibold text-sm hover:bg-red-700 transition-all duration-300 shadow-lg inline-flex items-center gap-2">
             <i class="fab fa-youtube" /> Watch Live
           </a>
-          <a href="https://t.me/zioncitymessages" target="_blank" class="btn-blue text-sm inline-flex items-center gap-2">
-            <i class="fab fa-telegram" /> Join Telegram
-          </a>
         </div>
       </div>
     </div>
 
-    <!-- Service Times -->
+    <!-- Service Times + Countdown -->
     <section class="bg-white relative z-10 -mt-14">
       <div class="max-w-4xl mx-auto px-4">
-        <div class="bg-white rounded-2xl shadow-xl p-5 md:p-7 grid grid-cols-2 gap-4">
-          <div v-for="s in serviceTimes" :key="s.title" class="flex items-center gap-3">
-            <div :class="`w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center shrink-0 ${s.color}`">
-              <i :class="`fas ${s.icon} text-lg`" />
+        <div class="bg-white rounded-2xl shadow-xl p-5 md:p-7">
+          <div class="grid grid-cols-2 gap-4 mb-5">
+            <div v-for="s in serviceTimes" :key="s.title" class="flex items-center gap-3">
+              <div :class="`w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center shrink-0 ${s.color}`">
+                <i :class="`fas ${s.icon} text-lg`" />
+              </div>
+              <div>
+                <p class="font-bold text-xs md:text-sm">{{ s.title }}</p>
+                <p class="text-gray-400 text-[11px] md:text-xs">{{ s.time }}</p>
+              </div>
             </div>
-            <div>
-              <p class="font-bold text-xs md:text-sm">{{ s.title }}</p>
-              <p class="text-gray-400 text-[11px] md:text-xs">{{ s.time }}</p>
+          </div>
+          <div class="border-t pt-4">
+            <p class="text-center text-xs text-gray-400 uppercase tracking-widest mb-3">Next Sunday Service In</p>
+            <div class="grid grid-cols-4 gap-2 text-center">
+              <div v-for="u in countdown" :key="u.label" class="bg-[#1a237e] text-white rounded-xl py-3">
+                <p class="text-2xl md:text-3xl font-bold">{{ u.value }}</p>
+                <p class="text-[10px] text-white/60 uppercase tracking-wider">{{ u.label }}</p>
+              </div>
             </div>
           </div>
         </div>
@@ -227,6 +235,30 @@ const serviceTimes = [
   { icon: 'fa-sun', color: 'text-yellow-500 bg-yellow-50', title: 'Sunday Service', time: '9:00 AM WAT' },
   { icon: 'fa-pray', color: 'text-purple-500 bg-purple-50', title: 'Prayer Meeting', time: 'Friday 5:00 PM' },
 ]
+
+const countdown = ref([])
+const updateCountdown = () => {
+  const now = new Date()
+  const next = new Date()
+  const day = now.getDay() // 0=Sun
+  const daysUntilSunday = day === 0 ? 7 : 7 - day
+  next.setDate(now.getDate() + daysUntilSunday)
+  next.setHours(9, 0, 0, 0)
+  const diff = next - now
+  const d = Math.floor(diff / 86400000)
+  const h = Math.floor((diff % 86400000) / 3600000)
+  const m = Math.floor((diff % 3600000) / 60000)
+  const s = Math.floor((diff % 60000) / 1000)
+  countdown.value = [
+    { label: 'Days', value: String(d).padStart(2, '0') },
+    { label: 'Hours', value: String(h).padStart(2, '0') },
+    { label: 'Mins', value: String(m).padStart(2, '0') },
+    { label: 'Secs', value: String(s).padStart(2, '0') },
+  ]
+}
+let timer
+onMounted(() => { updateCountdown(); timer = setInterval(updateCountdown, 1000) })
+onUnmounted(() => clearInterval(timer))
 const followLinks = [
   { href: 'https://youtube.com/@aocmizioncity', icon: 'fa-youtube', label: 'YouTube', colors: 'bg-red-50 text-red-500' },
   { href: 'https://instagram.com/aocmizioncity', icon: 'fa-instagram', label: 'Instagram', colors: 'bg-pink-50 text-pink-500' },
