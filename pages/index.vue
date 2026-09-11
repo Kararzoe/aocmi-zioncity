@@ -70,10 +70,10 @@
           </div>
         </div>
         <div class="grid grid-cols-2 gap-3">
-          <img src="/img/church-1.jpg" alt="Service" class="rounded-xl w-full h-40 object-cover shadow-md" />
-          <img src="/img/church-2.jpg" alt="Service" class="rounded-xl w-full h-40 object-cover shadow-md mt-6" />
-          <img src="/img/church-3.jpg" alt="Service" class="rounded-xl w-full h-40 object-cover shadow-md -mt-6" />
-          <img src="/img/church-4.jpg" alt="Service" class="rounded-xl w-full h-40 object-cover shadow-md" />
+          <img src="/img/church-1.jpg" alt="Service" loading="lazy" class="rounded-xl w-full h-40 object-cover shadow-md" />
+          <img src="/img/church-2.jpg" alt="Service" loading="lazy" class="rounded-xl w-full h-40 object-cover shadow-md mt-6" />
+          <img src="/img/church-3.jpg" alt="Service" loading="lazy" class="rounded-xl w-full h-40 object-cover shadow-md -mt-6" />
+          <img src="/img/church-4.jpg" alt="Service" loading="lazy" class="rounded-xl w-full h-40 object-cover shadow-md" />
         </div>
       </div>
     </section>
@@ -82,7 +82,7 @@
     <section class="py-16">
       <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-10 items-center">
         <div class="relative order-2 md:order-1">
-          <img src="/img/pastor-gmp.jpg" alt="Pastor" class="rounded-2xl w-full shadow-xl" />
+          <img src="/img/pastor-gmp.jpg" alt="Pastor" loading="lazy" class="rounded-2xl w-full shadow-xl" />
           <div class="absolute -bottom-3 -right-3 w-20 h-20 bg-yellow-200 rounded-2xl -z-10" />
           <div class="absolute -top-3 -left-3 w-16 h-16 bg-[#1a237e]/20 rounded-2xl -z-10" />
         </div>
@@ -108,7 +108,7 @@
           <NuxtLink v-for="m in messages" :key="m.id" :to="`/our-messages/${m.slug}`" class="messages-link group">
             <div class="card-hover bg-white text-gray-800">
               <div class="overflow-hidden">
-                <img :src="m.image" :alt="m.title"
+                <img :src="m.image" :alt="m.title" loading="lazy"
                   class="w-full h-32 md:h-40 object-cover group-hover:scale-105 transition-transform duration-500" />
               </div>
               <div class="p-4">
@@ -133,7 +133,7 @@
     <section v-if="wordOfTheYear" class="py-16">
       <div class="max-w-5xl mx-auto px-4 grid md:grid-cols-5 gap-8 items-center">
         <div class="md:col-span-3">
-          <img :src="wordOfTheYear.img" alt="Word of the Year" class="rounded-2xl w-full shadow-xl" />
+          <img :src="wordOfTheYear.img" alt="Word of the Year" loading="lazy" class="rounded-2xl w-full shadow-xl" />
         </div>
         <div class="md:col-span-2">
           <span class="purple-text">Prophetic Declaration</span>
@@ -153,7 +153,7 @@
         </div>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
           <div v-for="src in galleryImages" :key="src" class="overflow-hidden rounded-xl shadow-sm group">
-            <img :src="src" alt="AOCMI" class="w-full h-36 md:h-44 object-cover group-hover:scale-110 transition-transform duration-500" />
+            <img :src="src" alt="AOCMI" loading="lazy" class="w-full h-36 md:h-44 object-cover group-hover:scale-110 transition-transform duration-500" />
           </div>
         </div>
         <div class="text-center mt-7">
