@@ -51,10 +51,10 @@ const router = useRouter()
 const searchInput = ref(route.query.search || '')
 const page = computed(() => parseInt(route.query.page || '1'))
 
-const { data: seriesData } = await useFetch('/api/sermon-series')
+const { data: seriesData } = useFetch('/api/sermon-series')
 const allSeries = computed(() => seriesData.value?.series || [])
 
-const { data } = await useFetch(() => `/api/messages?page=${page.value}&search=${route.query.search || ''}&series=${route.query.series || ''}`)
+const { data } = useFetch(() => `/api/messages?page=${page.value}&search=${route.query.search || ''}&series=${route.query.series || ''}`)
 const messages = computed(() => data.value?.messages || [])
 const pages = computed(() => data.value?.pages || 1)
 

@@ -10,6 +10,8 @@
 
 <script setup>
 const announcement = ref(null)
-const { data } = await useFetch('/api/announcements')
-if (data.value?.announcements?.length) announcement.value = data.value.announcements[0]
+const { data } = useFetch('/api/announcements')
+watch(data, (val) => {
+  if (val?.announcements?.length) announcement.value = val.announcements[0]
+})
 </script>

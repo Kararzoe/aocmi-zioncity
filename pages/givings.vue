@@ -117,7 +117,7 @@
 </template>
 
 <script setup>
-const { data: givingsData } = await useFetch('/api/givings')
+const { data: givingsData } = useFetch('/api/givings')
 const givings = computed(() => givingsData.value)
 const copied = ref(null)
 

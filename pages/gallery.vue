@@ -12,7 +12,7 @@
 </template>
 
 <script setup>
-const { data } = await useFetch('/api/gallery')
+const { data } = useFetch('/api/gallery')
 const photos = computed(() => data.value?.photos || [])
 useHead({ title: 'Gallery' })
 </script>
