@@ -27,7 +27,7 @@
         <span class="purple-text">About</span>
         <p>Pastor Prince Buma is the founder and president of Ambassadors of Christ Ministries International (AOCMI), also known as Zion City — The Heavenly Jerusalem.</p>
         <p>Under his leadership, AOCMI-ZION CITY has grown into a vibrant community of believers who are grounded in the Word, empowered by the Holy Spirit, and committed to fulfilling the Great Commission.</p>
-        <p>Pastor Buma's teaching ministry is characterized by clarity, depth, and a strong emphasis on the practical application of scripture.</p>
+        <p>Pastor Prince Buma's teaching ministry is characterized by clarity, depth, and a strong emphasis on the practical application of scripture.</p>
         <p>His vision is to see a generation of believers who are not only hearers of the Word but doers — men and women who carry the presence of God and impact their world for the kingdom.</p>
       </div>
     </section>
