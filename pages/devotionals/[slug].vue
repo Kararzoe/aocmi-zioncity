@@ -16,7 +16,7 @@
 
 <script setup>
 const route = useRoute()
-const { data: d } = await useFetch(`/api/devotionals?slug=${route.params.slug}`)
+const { data: d } = useFetch(`/api/devotionals?slug=${route.params.slug}`)
 if (!d.value) throw createError({ statusCode: 404, message: 'Not found' })
 useHead({ title: d.value?.title })
 </script>

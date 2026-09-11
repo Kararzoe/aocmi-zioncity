@@ -51,7 +51,7 @@ const router = useRouter()
 const searchInput = ref(route.query.search || '')
 const page = computed(() => parseInt(route.query.page || '1'))
 
-const { data } = await useFetch(() => `/api/events?page=${page.value}&search=${route.query.search || ''}`)
+const { data } = useFetch(() => `/api/events?page=${page.value}&search=${route.query.search || ''}`)
 const events = computed(() => data.value?.events || [])
 const pages = computed(() => data.value?.pages || 1)
 

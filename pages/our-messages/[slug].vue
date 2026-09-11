@@ -23,7 +23,7 @@
 
 <script setup>
 const route = useRoute()
-const { data: message } = await useFetch(`/api/messages/${route.params.slug}`)
+const { data: message } = useFetch(`/api/messages/${route.params.slug}`)
 if (!message.value) throw createError({ statusCode: 404, message: 'Message not found' })
 useHead({ title: message.value?.title })
 </script>

@@ -18,7 +18,7 @@
 
 <script setup>
 const route = useRoute()
-const { data: event } = await useFetch(`/api/events/${route.params.slug}`)
+const { data: event } = useFetch(`/api/events/${route.params.slug}`)
 if (!event.value) throw createError({ statusCode: 404, message: 'Event not found' })
 useHead({ title: event.value?.title })
 </script>

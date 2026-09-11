@@ -52,7 +52,7 @@
 </template>
 
 <script setup>
-const { data } = await useFetch('/api/store')
+const { data } = useFetch('/api/store')
 const stores = computed(() => data.value?.stores || [])
 useHead({ title: 'Store' })
 </script>

@@ -14,7 +14,7 @@
 
 <script setup>
 const route = useRoute()
-const { data: music } = await useFetch(`/api/music/${route.params.slug}`)
+const { data: music } = useFetch(`/api/music/${route.params.slug}`)
 if (!music.value) throw createError({ statusCode: 404, message: 'Not found' })
 useHead({ title: music.value?.title })
 </script>

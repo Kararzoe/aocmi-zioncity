@@ -50,7 +50,7 @@ const form = reactive({ name: '', email: '', testimony: '' })
 const loading = ref(false)
 const msg = ref('')
 
-const { data } = await useFetch('/api/testimonies')
+const { data } = useFetch('/api/testimonies')
 const testimonies = computed(() => data.value?.testimonies || [])
 
 const submit = async () => {

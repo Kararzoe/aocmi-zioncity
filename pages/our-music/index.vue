@@ -41,7 +41,7 @@ const router = useRouter()
 const searchInput = ref(route.query.search || '')
 const page = computed(() => parseInt(route.query.page || '1'))
 
-const { data } = await useFetch(() => `/api/music?page=${page.value}&search=${route.query.search || ''}`)
+const { data } = useFetch(() => `/api/music?page=${page.value}&search=${route.query.search || ''}`)
 const musics = computed(() => data.value?.musics || [])
 const pages = computed(() => data.value?.pages || 1)
 

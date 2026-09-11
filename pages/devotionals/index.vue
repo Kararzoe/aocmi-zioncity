@@ -29,7 +29,7 @@
 </template>
 
 <script setup>
-const { data } = await useFetch('/api/devotionals')
+const { data } = useFetch('/api/devotionals')
 const devotionals = computed(() => data.value?.devotionals || [])
 useHead({ title: 'Apokalupsis — Devotionals' })
 </script>
