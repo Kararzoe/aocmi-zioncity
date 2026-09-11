@@ -215,9 +215,9 @@
 </template>
 
 <script setup>
-const { data: msgData } = await useFetch('/api/messages?page=1')
-const { data: wordData } = await useFetch('/api/word-of-the-year')
-const { data: galleryData } = await useFetch('/api/gallery')
+const { data: msgData } = useFetch('/api/messages?page=1')
+const { data: wordData } = useFetch('/api/word-of-the-year')
+const { data: galleryData } = useFetch('/api/gallery')
 
 const messages = computed(() => msgData.value?.messages?.slice(0, 6) || [])
 const wordOfTheYear = computed(() => wordData.value)

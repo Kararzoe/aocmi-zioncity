@@ -1,16 +1,6 @@
-const CACHE = 'aocmi-v1'
-const STATIC = [
-  '/',
-  '/our-messages',
-  '/givings',
-  '/about-us',
-  '/img/logo.png',
-]
+const CACHE = 'aocmi-v2'
 
-self.addEventListener('install', (e) => {
-  e.waitUntil(caches.open(CACHE).then(c => c.addAll(STATIC)))
-  self.skipWaiting()
-})
+self.addEventListener('install', () => self.skipWaiting())
 
 self.addEventListener('activate', (e) => {
   e.waitUntil(caches.keys().then(keys =>
@@ -23,24 +13,24 @@ self.addEventListener('fetch', (e) => {
   const { request } = e
   const url = new URL(request.url)
 
-  // Skip non-GET and API requests — always network
-  if (request.method !== 'GET' || url.pathname.startsWith('/api/')) {
-    return e.respondWith(fetch(request))
+  // Never intercept — just pass through everything
+  if (
+    request.method !== 'GET' ||
+    url.pathname.startsWith('/api/') ||
+    request.destination === 'document' ||
+    url.pathname === '/'
+  ) {
+    return
   }
 
-  // Cache-first for images and static assets
-  if (request.destination === 'image' || url.pathname.startsWith('/_nuxt/') || url.pathname.startsWith('/img/')) {
-    return e.respondWith(
+  // Cache-first only for images and nuxt chunks
+  if (request.destination === 'image' || url.pathname.startsWith('/_nuxt/')) {
+    e.respondWith(
       caches.match(request).then(cached => cached || fetch(request).then(res => {
         const clone = res.clone()
         caches.open(CACHE).then(c => c.put(request, clone))
         return res
-      }))
+      }).catch(() => cached))
     )
   }
-
-  // Network-first for everything else
-  e.respondWith(
-    fetch(request).catch(() => caches.match(request))
-  )
 })
