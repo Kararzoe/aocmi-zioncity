@@ -132,16 +132,16 @@
     </section>
 
     <!-- Word of the Year -->
-    <section v-if="wordOfTheYear" class="py-16">
-      <div class="max-w-5xl mx-auto px-4 grid md:grid-cols-5 gap-8 items-center">
-        <div class="md:col-span-3">
-          <img :src="wordOfTheYear.img" alt="Word of the Year" loading="lazy" class="rounded-2xl w-full shadow-xl" />
+    <section v-if="wordOfTheYear" class="py-20 relative overflow-hidden" style="background: linear-gradient(135deg, #0a1128 0%, #1a237e 60%, #4a148c 100%)">
+      <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at 20% 50%, white 1px, transparent 1px), radial-gradient(circle at 80% 20%, white 1px, transparent 1px); background-size: 60px 60px" />
+      <div class="max-w-5xl mx-auto px-4 grid md:grid-cols-2 gap-10 items-center relative z-10">
+        <div class="woty-img" >
+          <img :src="wordOfTheYear.img" alt="Word of the Year" loading="lazy" class="rounded-2xl w-full shadow-2xl" />
         </div>
-        <div class="md:col-span-2">
-          <span class="purple-text">Prophetic Declaration</span>
-          <h2 class="text-2xl md:text-3xl font-bold my-3">Word of the Year</h2>
-          <h3 class="text-lg text-[#1a237e] font-bold mb-3">{{ wordOfTheYear.title }}</h3>
-          <p class="text-gray-500 text-sm leading-relaxed">{{ wordOfTheYear.description }}</p>
+        <div class="text-white text-center md:text-left woty-text">
+          <p class="uppercase tracking-[0.4em] text-white/50 text-xs mb-3">Prophetic Declaration</p>
+          <div class="h-[2px] w-16 bg-gradient-to-r from-white/50 to-transparent mb-6 mx-auto md:mx-0" />
+          <h2 class="text-5xl md:text-7xl font-black text-white leading-none mb-2" style="letter-spacing: -0.02em">2026</h2>
         </div>
       </div>
     </section>
@@ -260,3 +260,22 @@ const followLinks = [
   { href: 'https://twitter.com/aocmizioncity', icon: 'fa-twitter', label: 'Twitter', colors: 'bg-sky-50 text-sky-400' },
 ]
 </script>
+
+<style scoped>
+.woty-img {
+  opacity: 0;
+  animation: slideInLeft 0.7s ease forwards 0.1s;
+}
+.woty-text {
+  opacity: 0;
+  animation: slideInRight 0.7s ease forwards 0.3s;
+}
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+</style>
