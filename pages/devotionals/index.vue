@@ -5,10 +5,31 @@
       <h1 class="text-4xl md:text-5xl font-bold mt-2">APOKALUPSIS</h1>
     </div>
     <div class="max-w-6xl mx-auto px-4 py-12">
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10 max-w-2xl mx-auto">
-        <img src="/img/apokalopsis.png" alt="Apokalupsis" class="rounded-2xl w-full shadow-xl" />
-        <img src="/img/apokalupsis-account.jpg" alt="Apokalupsis Account" class="rounded-2xl w-full shadow-xl" />
+
+      <!-- Church Account Details -->
+      <div class="max-w-xl mx-auto mb-12">
+        <div class="rounded-2xl overflow-hidden shadow-lg border border-gray-100">
+          <div class="px-6 py-4 text-white font-bold tracking-wide" style="background: linear-gradient(135deg, #00843D, #00a84f)">
+            <p class="text-xs text-white/70 uppercase tracking-widest mb-1">Church Account Details</p>
+            <p class="text-lg">Sterling Bank</p>
+          </div>
+          <div class="bg-white px-6 py-5 space-y-3">
+            <div class="flex justify-between items-center border-b border-gray-100 pb-3">
+              <span class="text-gray-400 text-xs">Account Name</span>
+              <span class="font-bold text-sm">AOCMI ZION CITY (APOKALUPSIS)</span>
+            </div>
+            <div class="flex justify-between items-center border-b border-gray-100 pb-3">
+              <span class="text-gray-400 text-xs">Naira Account</span>
+              <span class="font-mono font-bold text-[#1a237e] text-xl tracking-widest">0512611610</span>
+            </div>
+            <button @click="copy('0512611610')" class="flex items-center gap-1.5 bg-gray-50 hover:bg-[#1a237e] hover:text-white text-gray-500 text-xs font-semibold px-3 py-2 rounded-xl transition-all duration-200">
+              <i :class="copied ? 'fas fa-check text-green-500' : 'fas fa-copy'" />
+              <span>{{ copied ? 'Copied!' : 'Copy Account Number' }}</span>
+            </button>
+          </div>
+        </div>
       </div>
+
       <div class="grid md:grid-cols-3 gap-6">
         <NuxtLink v-for="d in devotionals" :key="d.id" :to="`/devotionals/${d.slug}`" class="messages-link group">
           <div class="card-hover bg-white">
@@ -31,5 +52,11 @@
 <script setup>
 const { data } = useFetch('/api/devotionals')
 const devotionals = computed(() => data.value?.devotionals || [])
+const copied = ref(false)
+const copy = (text) => {
+  navigator.clipboard.writeText(text)
+  copied.value = true
+  setTimeout(() => { copied.value = false }, 2000)
+}
 useHead({ title: 'Apokalupsis — Devotionals' })
 </script>
