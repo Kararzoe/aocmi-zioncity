@@ -189,7 +189,6 @@
               </div>
               <div>
                 <p class="font-bold text-white text-sm">{{ t.name }}</p>
-                <p class="text-white/50 text-[10px]">{{ new Date(t.createdAt).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }) }}</p>
               </div>
             </div>
             <p class="text-white/80 text-sm leading-relaxed">{{ t.testimony.length > 200 ? t.testimony.slice(0, 200) + '...' : t.testimony }}</p>
