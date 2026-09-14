@@ -171,37 +171,70 @@
     </section>
 
     <!-- Testimonies -->
-    <section v-if="testimonies.length" class="py-20 relative overflow-hidden" style="background: linear-gradient(135deg, #0a1128 0%, #1a237e 60%, #4a148c 100%)">
-      <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at 20% 50%, white 1px, transparent 1px), radial-gradient(circle at 80% 20%, white 1px, transparent 1px); background-size: 60px 60px" />
+    <section v-if="testimonies.length" class="py-20 relative overflow-hidden">
+      <!-- Background -->
+      <div class="absolute inset-0" style="background: linear-gradient(135deg, #0a1128 0%, #1a237e 55%, #4a148c 100%)" />
+      <div class="absolute inset-0 opacity-[0.07]" style="background-image: radial-gradient(circle, white 1px, transparent 1px); background-size: 40px 40px" />
+      <!-- Floating orbs -->
+      <div class="absolute top-10 left-10 w-64 h-64 rounded-full blur-3xl opacity-20" style="background: radial-gradient(circle, #7c3aed, transparent)" />
+      <div class="absolute bottom-10 right-10 w-64 h-64 rounded-full blur-3xl opacity-20" style="background: radial-gradient(circle, #1d4ed8, transparent)" />
+
       <div class="max-w-6xl mx-auto px-4 relative z-10">
-        <div class="text-center mb-10">
-          <span class="text-white/50 uppercase tracking-[0.3em] text-xs">Praise Reports</span>
-          <h2 class="text-2xl md:text-3xl font-bold text-white mt-2">What God Is Doing</h2>
+        <!-- Header -->
+        <div class="text-center mb-12">
+          <div class="inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-4 py-1.5 mb-4">
+            <i class="fas fa-star text-yellow-400 text-xs" />
+            <span class="text-white/70 uppercase tracking-[0.25em] text-[10px]">Praise Reports</span>
+          </div>
+          <h2 class="text-3xl md:text-4xl font-black text-white">What God Is Doing</h2>
+          <p class="text-white/50 text-sm mt-2">Real stories from our congregation</p>
         </div>
-        <div class="grid md:grid-cols-3 gap-6">
+
+        <!-- Cards -->
+        <div class="grid md:grid-cols-3 gap-5">
           <div v-for="(t, i) in testimonies" :key="t.id"
-            class="tcard relative bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 hover:bg-white/15 transition-all duration-300"
+            class="htcard group relative rounded-3xl overflow-hidden"
             :style="{ animationDelay: `${i * 0.15}s` }">
-            <i class="fas fa-quote-left text-white/20 text-3xl absolute top-4 right-4" />
-            <div class="flex items-center gap-3 mb-4">
-              <div class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center shrink-0">
-                <i class="fas fa-user text-white text-sm" />
+            <!-- Card inner -->
+            <div class="absolute inset-0 bg-white/10 backdrop-blur-md border border-white/15 rounded-3xl group-hover:bg-white/15 transition-all duration-500" />
+            <!-- Glow orb per card -->
+            <div class="absolute -top-6 -right-6 w-24 h-24 rounded-full blur-2xl opacity-30 transition-opacity duration-500 group-hover:opacity-50"
+              :style="{ background: ['#7c3aed','#0ea5e9','#10b981'][i % 3] }" />
+            <div class="relative z-10 p-6">
+              <!-- Quote -->
+              <div class="flex justify-between items-start mb-4">
+                <div class="w-9 h-9 rounded-xl flex items-center justify-center"
+                  :style="{ background: ['linear-gradient(135deg,#7c3aed,#4f46e5)','linear-gradient(135deg,#0ea5e9,#0284c7)','linear-gradient(135deg,#10b981,#059669)'][i % 3] }">
+                  <i class="fas fa-quote-left text-white text-xs" />
+                </div>
+                <span class="text-4xl font-black text-white/10 leading-none select-none">{{ String(i+1).padStart(2,'0') }}</span>
               </div>
-              <div>
-                <p class="font-bold text-white text-sm">{{ t.name }}</p>
+              <!-- Text -->
+              <p class="text-white/80 text-sm leading-relaxed mb-5">{{ t.testimony.length > 180 ? t.testimony.slice(0, 180) + '...' : t.testimony }}</p>
+              <!-- Divider -->
+              <div class="h-px bg-gradient-to-r from-transparent via-white/20 to-transparent mb-4" />
+              <!-- Author + logo -->
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-2.5">
+                  <div class="w-8 h-8 rounded-full flex items-center justify-center"
+                    :style="{ background: ['linear-gradient(135deg,#7c3aed,#4f46e5)','linear-gradient(135deg,#0ea5e9,#0284c7)','linear-gradient(135deg,#10b981,#059669)'][i % 3] }">
+                    <i class="fas fa-user text-white text-[10px]" />
+                  </div>
+                  <p class="font-bold text-white text-sm">{{ t.name }}</p>
+                </div>
+                <div class="flex items-center gap-1 opacity-40">
+                  <img src="/img/logo.png" class="w-4 h-4 rounded-full" />
+                  <span class="text-[8px] text-white uppercase tracking-widest hidden sm:block">AOCMI</span>
+                </div>
               </div>
-            </div>
-            <p class="text-white/80 text-sm leading-relaxed">{{ t.testimony.length > 200 ? t.testimony.slice(0, 200) + '...' : t.testimony }}</p>
-            <!-- Logo watermark -->
-            <div class="flex items-center gap-1.5 mt-4 pt-3 border-t border-white/10">
-              <img src="/img/logo.png" class="w-4 h-4 rounded opacity-60" />
-              <span class="text-white/40 text-[9px] uppercase tracking-widest">AOCMI Zion City</span>
             </div>
           </div>
         </div>
+
+        <!-- CTA -->
         <div class="text-center mt-10 flex flex-col sm:flex-row gap-3 justify-center">
-          <NuxtLink to="/testimonies" class="bg-white text-[#1a237e] px-6 py-2.5 rounded-full font-semibold text-xs hover:bg-gray-100 transition shadow-md inline-block">Read More Testimonies</NuxtLink>
-          <NuxtLink to="/testimonies" class="border border-white/40 text-white px-6 py-2.5 rounded-full font-semibold text-xs hover:bg-white/10 transition inline-block">Share Your Testimony</NuxtLink>
+          <NuxtLink to="/testimonies" class="bg-white text-[#1a237e] px-6 py-2.5 rounded-full font-semibold text-xs hover:bg-gray-100 transition shadow-lg inline-block">Read More Testimonies</NuxtLink>
+          <NuxtLink to="/testimonies" class="border border-white/30 text-white px-6 py-2.5 rounded-full font-semibold text-xs hover:bg-white/10 transition inline-block">Share Your Testimony</NuxtLink>
         </div>
       </div>
     </section>
@@ -337,6 +370,14 @@ const followLinks = [
 .tcard {
   opacity: 0;
   animation: fadeUp 0.6s ease forwards;
+}
+.htcard {
+  opacity: 0;
+  animation: fadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.htcard:hover {
+  transform: translateY(-6px);
 }
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(30px); }
