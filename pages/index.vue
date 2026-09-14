@@ -184,10 +184,9 @@
         <div class="text-center mb-12">
           <div class="inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-4 py-1.5 mb-4">
             <i class="fas fa-star text-yellow-400 text-xs" />
-            <span class="text-white/70 uppercase tracking-[0.25em] text-[10px]">Praise Reports</span>
+            <span class="text-white/70 uppercase tracking-[0.25em] text-[10px]">Testimonies</span>
           </div>
-          <h2 class="text-3xl md:text-4xl font-black text-white">What God Is Doing</h2>
-          <p class="text-white/50 text-sm mt-2">Real stories from our congregation</p>
+          <p class="text-white/50 text-sm mt-2">From Our Ambassadors</p>
         </div>
 
         <!-- Cards -->
