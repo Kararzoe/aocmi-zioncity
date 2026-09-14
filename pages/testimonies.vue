@@ -7,7 +7,7 @@
       <div class="relative z-10">
         <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-1.5 mb-4">
           <i class="fas fa-star text-yellow-400 text-xs" />
-          <span class="text-white/80 uppercase tracking-[0.2em] text-xs">Testimonies</span>
+          <span class="text-white/80 uppercase tracking-[0.2em] text-xs">Praise Reports</span>
         </div>
         <h1 class="text-4xl md:text-6xl font-black mt-2 mb-3">Testimonies</h1>
         <p class="text-white/60 text-sm max-w-md mx-auto leading-relaxed">See what God is doing in the lives of His people at AOCMI Zion City</p>
