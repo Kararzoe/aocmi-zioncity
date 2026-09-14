@@ -170,6 +170,43 @@
       </div>
     </section>
 
+    <!-- Testimonies -->
+    <section v-if="testimonies.length" class="py-20 relative overflow-hidden" style="background: linear-gradient(135deg, #0a1128 0%, #1a237e 60%, #4a148c 100%)">
+      <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at 20% 50%, white 1px, transparent 1px), radial-gradient(circle at 80% 20%, white 1px, transparent 1px); background-size: 60px 60px" />
+      <div class="max-w-6xl mx-auto px-4 relative z-10">
+        <div class="text-center mb-10">
+          <span class="text-white/50 uppercase tracking-[0.3em] text-xs">Praise Reports</span>
+          <h2 class="text-2xl md:text-3xl font-bold text-white mt-2">What God Is Doing</h2>
+        </div>
+        <div class="grid md:grid-cols-3 gap-6">
+          <div v-for="(t, i) in testimonies" :key="t.id"
+            class="tcard relative bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 hover:bg-white/15 transition-all duration-300"
+            :style="{ animationDelay: `${i * 0.15}s` }">
+            <i class="fas fa-quote-left text-white/20 text-3xl absolute top-4 right-4" />
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center shrink-0">
+                <i class="fas fa-user text-white text-sm" />
+              </div>
+              <div>
+                <p class="font-bold text-white text-sm">{{ t.name }}</p>
+                <p class="text-white/50 text-[10px]">{{ new Date(t.createdAt).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }) }}</p>
+              </div>
+            </div>
+            <p class="text-white/80 text-sm leading-relaxed">{{ t.testimony.length > 200 ? t.testimony.slice(0, 200) + '...' : t.testimony }}</p>
+            <!-- Logo watermark -->
+            <div class="flex items-center gap-1.5 mt-4 pt-3 border-t border-white/10">
+              <img src="/img/logo.png" class="w-4 h-4 rounded opacity-60" />
+              <span class="text-white/40 text-[9px] uppercase tracking-widest">AOCMI Zion City</span>
+            </div>
+          </div>
+        </div>
+        <div class="text-center mt-10 flex flex-col sm:flex-row gap-3 justify-center">
+          <NuxtLink to="/testimonies" class="bg-white text-[#1a237e] px-6 py-2.5 rounded-full font-semibold text-xs hover:bg-gray-100 transition shadow-md inline-block">Read More Testimonies</NuxtLink>
+          <NuxtLink to="/testimonies" class="border border-white/40 text-white px-6 py-2.5 rounded-full font-semibold text-xs hover:bg-white/10 transition inline-block">Share Your Testimony</NuxtLink>
+        </div>
+      </div>
+    </section>
+
     <!-- Gallery -->
     <section class="py-16 bg-gray-50">
       <div class="max-w-6xl mx-auto px-4">
@@ -245,11 +282,13 @@ const { data: msgData } = useFetch('/api/messages?page=1')
 const { data: wordData } = useFetch('/api/word-of-the-year')
 const { data: galleryData } = useFetch('/api/gallery')
 const { data: newsData } = useFetch('/api/news?page=1')
+const { data: testimonyData } = useFetch('/api/testimonies')
 
 const messages = computed(() => msgData.value?.messages?.slice(0, 6) || [])
 const wordOfTheYear = computed(() => wordData.value)
 const galleryImages = computed(() => (galleryData.value?.photos || []).slice(0, 8).map(p => p.img))
 const news = computed(() => newsData.value?.news?.slice(0, 3) || [])
+const testimonies = computed(() => testimonyData.value?.testimonies?.slice(0, 3) || [])
 
 const serviceTimes = [
   { icon: 'fa-sun', color: 'text-yellow-500 bg-yellow-50', title: 'Sunday Service', time: '9:00 AM WAT' },
@@ -295,6 +334,14 @@ const followLinks = [
 .woty-text {
   opacity: 0;
   animation: slideInRight 0.7s ease forwards 0.3s;
+}
+.tcard {
+  opacity: 0;
+  animation: fadeUp 0.6s ease forwards;
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 @keyframes slideInLeft {
   from { opacity: 0; transform: translateX(-40px); }
