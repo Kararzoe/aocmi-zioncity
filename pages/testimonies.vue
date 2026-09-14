@@ -7,7 +7,7 @@
       <div class="relative z-10">
         <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-1.5 mb-4">
           <i class="fas fa-star text-yellow-400 text-xs" />
-          <span class="text-white/80 uppercase tracking-[0.2em] text-xs">Praise Reports</span>
+          <span class="text-white/80 uppercase tracking-[0.2em] text-xs">Testimonies</span>
         </div>
         <h1 class="text-4xl md:text-6xl font-black mt-2 mb-3">Testimonies</h1>
         <p class="text-white/60 text-sm max-w-md mx-auto leading-relaxed">See what God is doing in the lives of His people at AOCMI Zion City</p>
@@ -15,11 +15,6 @@
           <div class="text-center">
             <p class="text-2xl font-black text-white">{{ testimonies.length }}+</p>
             <p class="text-white/50 text-[10px] uppercase tracking-wider">Testimonies</p>
-          </div>
-          <div class="w-px bg-white/20" />
-          <div class="text-center">
-            <p class="text-2xl font-black text-white">∞</p>
-            <p class="text-white/50 text-[10px] uppercase tracking-wider">God's Faithfulness</p>
           </div>
         </div>
       </div>
@@ -58,9 +53,8 @@
       <!-- Testimonies grid -->
       <template v-if="testimonies.length">
         <div class="text-center mb-12">
-          <span class="purple-text">What God Has Done</span>
-          <h2 class="section-title mt-2">Approved Testimonies</h2>
-          <p class="text-gray-400 text-sm mt-2">Real stories. Real people. Real God.</p>
+          <span class="purple-text">Testimonies</span>
+          <h2 class="section-title mt-2">From Our Ambassadors</h2>
         </div>
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           <div v-for="(t, i) in testimonies" :key="t.id"
@@ -71,6 +65,10 @@
             <div class="absolute inset-0 bg-gradient-to-br"
               :style="cardGradient(i)" />
             <div class="absolute inset-0 bg-white/95 group-hover:bg-white/90 transition-all duration-500" />
+            <!-- Logo watermark background -->
+            <div class="absolute inset-0 flex items-center justify-center opacity-[0.04] group-hover:opacity-[0.07] transition-opacity duration-500">
+              <img src="/img/logo.png" class="w-48 h-48 object-contain" />
+            </div>
 
             <!-- Glowing orb -->
             <div class="absolute -top-8 -right-8 w-28 h-28 rounded-full opacity-20 group-hover:opacity-30 transition-all duration-500 blur-xl"
@@ -115,9 +113,9 @@
   
                   </div>
                 </div>
-                <div class="flex items-center gap-1 opacity-40">
-                  <img src="/img/logo.png" class="w-5 h-5 rounded-full" />
-                  <span class="text-[8px] uppercase tracking-widest text-gray-400 hidden sm:block">AOCMI</span>
+                <div class="flex items-center gap-1.5">
+                  <img src="/img/logo.png" class="w-6 h-6 rounded-full shadow-sm" />
+                  <span class="text-[9px] uppercase tracking-widest text-gray-500 font-semibold">AOCMI Zion City</span>
                 </div>
               </div>
             </div>
