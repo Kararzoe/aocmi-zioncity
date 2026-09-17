@@ -11,9 +11,18 @@
           <h2 class="section-title mt-2">Event Highlights</h2>
         </div>
         <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-          <div>
+          <div class="event-vid">
             <video src="/videos/video_2026-03-16_21-49-23.mp4" controls loop playsinline class="rounded-2xl w-full shadow-xl" />
             <p class="text-center text-sm font-semibold mt-3">Afro Gospel Sunday</p>
+          </div>
+          <div class="event-vid" style="animation-delay:0.15s">
+            <div class="relative rounded-2xl overflow-hidden shadow-xl">
+              <video src="/videos/white-sunday.mp4" controls loop playsinline class="w-full rounded-2xl" />
+              <div class="absolute top-3 left-3">
+                <span class="bg-white text-[#1a237e] text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full shadow">✦ White Sunday</span>
+              </div>
+            </div>
+            <p class="text-center text-sm font-semibold mt-3">White Sunday Service</p>
           </div>
         </div>
       </div>
@@ -57,3 +66,14 @@ const pages = computed(() => data.value?.pages || 1)
 
 const doSearch = () => router.push({ query: { search: searchInput.value, page: 1 } })
 </script>
+
+<style scoped>
+.event-vid {
+  opacity: 0;
+  animation: fadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+</style>
