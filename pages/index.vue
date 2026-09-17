@@ -21,7 +21,7 @@
           <span class="hero-gradient-text">Ministries International</span>
         </h1>
         <p class="animate-fade-in-up animate-delay-3 text-base md:text-lg text-white/70 mb-10 max-w-xl mx-auto leading-relaxed font-light">
-          The joy of being in God's presence is an unparalleled experience
+          Conveying the message of reconciliation with the demonstration of Spirit and Power
         </p>
         <div class="animate-fade-in-up animate-delay-4 flex flex-col sm:flex-row gap-3 justify-center">
           <a href="https://youtube.com/@aocmizioncity" target="_blank"

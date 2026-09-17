@@ -103,7 +103,7 @@
 
         <div class="mt-8 bg-[#1a237e] text-white p-6 rounded-2xl text-center">
           <p class="text-white/70 text-sm mb-1">For enquiries, contact:</p>
-          <p class="text-lg font-bold">{{ givings?.phone || '+234 902 729 3178' }}</p>
+          <p class="text-lg font-bold">{{ givings?.phone || '09113191048' }}</p>
           <p class="text-white/70 text-sm">{{ givings?.email || 'hello@aocmizioncity.org' }}</p>
         </div>
       </div>
