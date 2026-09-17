@@ -60,20 +60,6 @@
       </div>
     </section>
 
-    <!-- Stats Bar -->
-    <section class="py-10 bg-gray-50">
-      <div class="max-w-5xl mx-auto px-4">
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-          <ScrollReveal v-for="(s, i) in stats" :key="s.label" anim="zoomIn" :delay="`${i * 0.1}s`">
-            <div class="bg-white rounded-2xl shadow-sm p-5 hover:shadow-md transition">
-              <p class="text-3xl md:text-4xl font-black text-[#1a237e]">{{ s.count }}</p>
-              <p class="text-gray-400 text-xs uppercase tracking-widest mt-1">{{ s.label }}</p>
-            </div>
-          </ScrollReveal>
-        </div>
-      </div>
-    </section>
-
     <!-- Join Online -->
     <section class="py-16 bg-gray-50">
       <div class="max-w-6xl mx-auto px-4">
@@ -378,12 +364,6 @@ const followLinks = [
   { href: 'https://twitter.com/aocmizioncity', icon: 'fa-twitter', label: 'Twitter', colors: 'bg-sky-50 text-sky-400' },
 ]
 
-const stats = [
-  { count: '500+', label: 'Members' },
-  { count: '3+', label: 'Years' },
-  { count: '100+', label: 'Messages' },
-  { count: '50+', label: 'Events' },
-]
 </script>
 
 <style scoped>

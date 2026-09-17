@@ -1,12 +1,5 @@
 <template>
-  <div class="floating-btns">
-    <!-- Watch Live -->
-    <a href="https://youtube.com/@aocmizioncity" target="_blank" class="float-btn live" title="Watch Live">
-      <span class="pulse-ring" />
-      <i class="fab fa-youtube" />
-      <span class="live-label">LIVE</span>
-    </a>
-  </div>
+  <div />
 </template>
 
 <style scoped>
