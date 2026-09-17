@@ -9,5 +9,6 @@
     <BackToTop />
     <ToastContainer />
     <InstallBanner />
+    <FloatingButtons />
   </div>
 </template>

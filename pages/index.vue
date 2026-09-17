@@ -60,6 +60,20 @@
       </div>
     </section>
 
+    <!-- Stats Bar -->
+    <section class="py-10 bg-gray-50">
+      <div class="max-w-5xl mx-auto px-4">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+          <ScrollReveal v-for="(s, i) in stats" :key="s.label" anim="zoomIn" :delay="`${i * 0.1}s`">
+            <div class="bg-white rounded-2xl shadow-sm p-5 hover:shadow-md transition">
+              <p class="text-3xl md:text-4xl font-black text-[#1a237e]">{{ s.count }}</p>
+              <p class="text-gray-400 text-xs uppercase tracking-widest mt-1">{{ s.label }}</p>
+            </div>
+          </ScrollReveal>
+        </div>
+      </div>
+    </section>
+
     <!-- Join Online -->
     <section class="py-16 bg-gray-50">
       <div class="max-w-6xl mx-auto px-4">
@@ -82,6 +96,7 @@
 
     <!-- About -->
     <section class="py-16">
+      <ScrollReveal anim="fadeUp">
       <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-10 items-center">
         <div class="relative order-2 md:order-1">
           <img src="/img/pastor-gmp.jpg" alt="Pastor" loading="lazy" class="rounded-2xl w-full shadow-xl" />
@@ -97,6 +112,7 @@
           <NuxtLink to="/about-us" class="btn-blue text-xs">Learn More &nbsp;<i class="fas fa-arrow-right text-[10px]" /></NuxtLink>
         </div>
       </div>
+      </ScrollReveal>
     </section>
 
     <!-- Messages -->
@@ -148,6 +164,7 @@
 
     <!-- News -->
     <section v-if="news.length" class="py-16">
+      <ScrollReveal anim="fadeUp">
       <div class="max-w-6xl mx-auto px-4">
         <div class="text-center mb-8">
           <span class="purple-text">Latest Updates</span>
@@ -168,6 +185,7 @@
           <NuxtLink to="/news" class="btn-blue text-xs">View All News &nbsp;<i class="fas fa-arrow-right text-[10px]" /></NuxtLink>
         </div>
       </div>
+      </ScrollReveal>
     </section>
 
     <!-- Testimonies -->
@@ -240,6 +258,7 @@
 
     <!-- Gallery -->
     <section class="py-16 bg-gray-50">
+      <ScrollReveal anim="fadeUp">
       <div class="max-w-6xl mx-auto px-4">
         <div class="text-center mb-8">
           <span class="purple-text">Pictorial Moments</span>
@@ -254,10 +273,12 @@
           <NuxtLink to="/gallery" class="btn-blue text-xs">View Full Gallery &nbsp;<i class="fas fa-arrow-right text-[10px]" /></NuxtLink>
         </div>
       </div>
+      </ScrollReveal>
     </section>
 
     <!-- Partner + Follow -->
     <section class="py-16">
+      <ScrollReveal anim="fadeUp">
       <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-6">
         <div class="rounded-2xl p-6 md:p-8 text-white relative overflow-hidden"
           style="background: linear-gradient(135deg, #1a237e 0%, #4a148c 100%)">
@@ -287,6 +308,7 @@
           </a>
         </div>
       </div>
+      </ScrollReveal>
     </section>
 
     <!-- Salvation -->
@@ -354,6 +376,13 @@ const followLinks = [
   { href: 'https://instagram.com/aocmizioncity', icon: 'fa-instagram', label: 'Instagram', colors: 'bg-pink-50 text-pink-500' },
   { href: 'https://www.facebook.com/aocmizioncity', icon: 'fa-facebook', label: 'Facebook', colors: 'bg-blue-50 text-blue-600' },
   { href: 'https://twitter.com/aocmizioncity', icon: 'fa-twitter', label: 'Twitter', colors: 'bg-sky-50 text-sky-400' },
+]
+
+const stats = [
+  { count: '500+', label: 'Members' },
+  { count: '3+', label: 'Years' },
+  { count: '100+', label: 'Messages' },
+  { count: '50+', label: 'Events' },
 ]
 </script>
 
