@@ -104,7 +104,7 @@
       <div class="max-w-6xl mx-auto px-4">
         <div class="text-center mb-10">
           <span class="text-white/60 uppercase tracking-wider text-xs">Listen & Learn</span>
-          <h2 class="text-2xl md:text-3xl font-bold mt-2">Download & Listen to Our Latest Messages</h2>
+          <h2 class="text-2xl md:text-3xl font-bold mt-2">Raising a people characterize by divine excellence through the practical teaching of the wisdom of God...</h2>
         </div>
         <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-5">
           <a v-for="m in messages" :key="m.id" :href="m.link" target="_blank" class="messages-link group">
