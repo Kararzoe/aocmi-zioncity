@@ -33,12 +33,12 @@
     </div>
 
     <!-- Service Times + Countdown -->
-    <section class="bg-white relative z-10 -mt-14">
+    <section class="relative z-10 -mt-14">
       <div class="max-w-4xl mx-auto px-4">
-        <div class="bg-white rounded-2xl shadow-xl p-5 md:p-7">
+        <div class="glass-light p-5 md:p-7 noise">
           <div class="grid grid-cols-2 gap-4 mb-5">
-            <div v-for="s in serviceTimes" :key="s.title" class="flex items-center gap-3">
-              <div :class="`w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center shrink-0 ${s.color}`">
+            <div v-for="s in serviceTimes" :key="s.title" class="flex items-center gap-3 p-3 rounded-2xl hover:bg-white/60 transition">
+              <div :class="`w-10 h-10 md:w-12 md:h-12 rounded-2xl flex items-center justify-center shrink-0 ${s.color} shadow-md`">
                 <i :class="`fas ${s.icon} text-lg`" />
               </div>
               <div>
@@ -47,18 +47,21 @@
               </div>
             </div>
           </div>
-          <div class="border-t pt-4">
+          <div class="border-t border-gray-100 pt-4">
             <p class="text-center text-xs text-gray-400 uppercase tracking-widest mb-3">Next Sunday Service In</p>
             <div class="grid grid-cols-4 gap-2 text-center">
-              <div v-for="u in countdown" :key="u.label" class="bg-[#1a237e] text-white rounded-xl py-3">
-                <p class="text-2xl md:text-3xl font-bold">{{ u.value }}</p>
-                <p class="text-[10px] text-white/60 uppercase tracking-wider">{{ u.label }}</p>
+              <div v-for="u in countdown" :key="u.label" class="countdown-box" style="background: linear-gradient(135deg, #0a1128, #1a237e)">
+                <p class="text-2xl md:text-3xl font-black text-white glow-text">{{ u.value }}</p>
+                <p class="text-[10px] text-white/50 uppercase tracking-wider mt-1">{{ u.label }}</p>
               </div>
             </div>
           </div>
         </div>
       </div>
     </section>
+
+    <!-- Bento Grid -->
+    <BentoGrid />
 
     <!-- Join Online -->
     <section class="py-16 bg-gray-50">
@@ -109,19 +112,21 @@
           <h2 class="text-2xl md:text-3xl font-bold mt-2">Raising a people characterize by divine excellence through the practical teaching of the wisdom of God...</h2>
         </div>
         <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-5">
-          <a v-for="m in messages" :key="m.id" :href="m.link" target="_blank" class="messages-link group">
-            <div class="card-hover bg-white text-gray-800">
+          <ScrollReveal v-for="(m, i) in messages" :key="m.id" anim="fadeUp" :delay="`${i * 0.08}s`">
+          <a :href="m.link" target="_blank" class="messages-link group block h-full">
+            <div class="h-full rounded-2xl overflow-hidden border border-white/10 hover:border-white/30 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl" style="background: rgba(255,255,255,0.07); backdrop-filter: blur(12px)">
               <div class="overflow-hidden">
                 <img :src="m.image" :alt="m.title" loading="lazy"
-                  class="w-full h-32 md:h-40 object-cover group-hover:scale-105 transition-transform duration-500" />
+                  class="w-full h-32 md:h-40 object-cover group-hover:scale-110 transition-transform duration-700" />
               </div>
               <div class="p-4">
-                <h3 class="font-bold text-xs md:text-sm mb-1">{{ m.title.length > 35 ? m.title.slice(0, 35) + '...' : m.title }}</h3>
-                <p class="text-[10px] md:text-xs text-gray-400 mb-2">{{ new Date(m.createdAt).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }) }}</p>
-                <span class="text-[#1a237e] text-[10px] md:text-xs font-semibold group-hover:underline">Listen Now →</span>
+                <h3 class="font-bold text-xs md:text-sm mb-1 text-white">{{ m.title.length > 35 ? m.title.slice(0, 35) + '...' : m.title }}</h3>
+                <p class="text-[10px] md:text-xs text-white/40 mb-2">{{ new Date(m.createdAt).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }) }}</p>
+                <span class="text-blue-300 text-[10px] md:text-xs font-semibold group-hover:underline inline-flex items-center gap-1"><i class="fas fa-headphones text-[9px]" /> Listen Now</span>
               </div>
             </div>
           </a>
+          </ScrollReveal>
           <p v-if="!messages.length" class="col-span-3 text-center text-white/60">No messages uploaded yet</p>
         </div>
         <div class="text-center mt-8 flex flex-col sm:flex-row gap-3 justify-center">
@@ -157,15 +162,17 @@
           <h2 class="section-title mt-2">News & Updates</h2>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-          <div v-for="n in news" :key="n.id" class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition">
+          <ScrollReveal v-for="(n, i) in news" :key="n.id" anim="fadeUp" :delay="`${i * 0.1}s`">
+          <div class="card-3d bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-2xl transition-all duration-500 h-full">
             <img v-if="n.image" :src="n.image" :alt="n.title" class="w-full h-44 object-cover" loading="lazy" />
-            <div class="p-5">
+            <div class="p-5 card-3d-inner">
               <p class="text-[10px] text-gray-400 mb-1">{{ new Date(n.createdAt).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }) }}</p>
               <h3 class="font-bold text-sm mb-2">{{ n.title }}</h3>
               <p class="text-gray-500 text-xs leading-relaxed mb-3">{{ n.body.length > 100 ? n.body.slice(0, 100) + '...' : n.body }}</p>
-              <a v-if="n.link" :href="n.link" target="_blank" class="text-[#1a237e] text-xs font-semibold hover:underline">Read More →</a>
+              <a v-if="n.link" :href="n.link" target="_blank" class="text-[#1a237e] text-xs font-semibold hover:underline inline-flex items-center gap-1"><i class="fas fa-arrow-right text-[9px]" /> Read More</a>
             </div>
           </div>
+          </ScrollReveal>
         </div>
         <div class="text-center mt-7">
           <NuxtLink to="/news" class="btn-blue text-xs">View All News &nbsp;<i class="fas fa-arrow-right text-[10px]" /></NuxtLink>
@@ -251,8 +258,11 @@
           <h2 class="section-title mt-2">Live at AOCMI-ZIONCITY</h2>
         </div>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
-          <div v-for="src in galleryImages" :key="src" class="overflow-hidden rounded-xl shadow-sm group">
-            <img :src="src" alt="AOCMI" loading="lazy" class="w-full h-36 md:h-44 object-cover group-hover:scale-110 transition-transform duration-500" />
+          <div v-for="(src, i) in galleryImages" :key="src"
+            class="overflow-hidden rounded-2xl shadow-sm group relative"
+            :style="{ animationDelay: `${i * 0.05}s` }">
+            <img :src="src" alt="AOCMI" loading="lazy" class="w-full h-36 md:h-44 object-cover group-hover:scale-110 transition-transform duration-700" />
+            <div class="absolute inset-0 bg-gradient-to-t from-[#1a237e]/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl" />
           </div>
         </div>
         <div class="text-center mt-7">
