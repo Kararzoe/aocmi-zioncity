@@ -1,9 +1,10 @@
 <template>
-  <div class="max-w-6xl mx-auto px-4 py-16">
-    <div class="text-center mb-8">
-      <span class="purple-text">Stay Updated</span>
-      <h1 class="text-3xl md:text-4xl font-bold mt-2">News & Calendar</h1>
+  <div>
+    <div class="pt-32 pb-20 text-white text-center" style="background: linear-gradient(135deg, #0a1128 0%, #1a237e 100%)">
+      <span class="text-white/60 uppercase tracking-[0.2em] text-sm">Stay Updated</span>
+      <h1 class="text-4xl md:text-5xl font-bold mt-2">News & Calendar</h1>
     </div>
+  <div class="max-w-6xl mx-auto px-4 py-16">
 
     <!-- Tabs -->
     <div class="flex gap-2 justify-center mb-8 flex-wrap">
@@ -46,6 +47,7 @@
       </div>
       <p v-if="!filtered.length" class="col-span-3 text-center text-gray-400 py-10">Nothing here yet. Check back soon.</p>
     </div>
+  </div>
   </div>
 </template>
 
