@@ -44,20 +44,7 @@
         </div>
       </ScrollReveal>
 
-      <!-- CELL 3: Normal — Give -->
-      <ScrollReveal anim="fadeUp" delay="0.15s" class="bento-cell">
-        <NuxtLink to="/givings" class="block w-full h-full relative noise" style="background: linear-gradient(135deg, #bf953f, #fcf6ba 40%, #b38728 70%, #fbf5b7 100%); background-size: 300% 300%; animation: liquidShift 4s ease infinite">
-          <div class="absolute inset-0 flex flex-col items-center justify-center p-5 text-center">
-            <div class="w-14 h-14 rounded-2xl bg-white/20 backdrop-blur-sm flex items-center justify-center mb-3 glow-gold">
-              <i class="fas fa-hand-holding-heart text-white text-2xl" />
-            </div>
-            <h3 class="text-white font-black text-lg">Partner With God</h3>
-            <p class="text-white/80 text-xs mt-1">Give & Support</p>
-          </div>
-        </NuxtLink>
-      </ScrollReveal>
-
-      <!-- CELL 4: Normal — Events -->
+      <!-- CELL 3: Normal — Events -->
       <ScrollReveal anim="fadeUp" delay="0.2s" class="bento-cell">
         <NuxtLink to="/events" class="block w-full h-full relative overflow-hidden">
           <img src="/img/church-1.jpg" class="w-full h-full object-cover" alt="Events" />
