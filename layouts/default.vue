@@ -10,5 +10,6 @@
     <ToastContainer />
     <InstallBanner />
     <FloatingButtons />
+    <GlobalAudioPlayer />
   </div>
 </template>

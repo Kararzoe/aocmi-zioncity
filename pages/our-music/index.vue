@@ -11,7 +11,8 @@
         <button class="btn-blue text-sm">Search</button>
       </form>
       <div class="grid md:grid-cols-4 gap-6">
-        <NuxtLink v-for="m in musics" :key="m.id" :to="`/our-music/${m.slug}`" class="messages-link group">
+        <ScrollReveal v-for="(m, i) in musics" :key="m.id" anim="fadeUp" :delay="`${(i % 4) * 0.08}s`">
+        <NuxtLink :to="`/our-music/${m.slug}`" class="messages-link group block">
           <div class="card-hover bg-white">
             <div class="overflow-hidden relative">
               <img :src="m.img" :alt="m.title"
@@ -28,6 +29,7 @@
             </div>
           </div>
         </NuxtLink>
+        </ScrollReveal>
       </div>
       <p v-if="!musics.length" class="text-center text-gray-400 mt-8">No music found.</p>
       <Pagination :pages="pages" :current="page" />

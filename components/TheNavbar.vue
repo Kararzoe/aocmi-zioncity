@@ -10,6 +10,11 @@
           :class="['text-[11px] uppercase tracking-wider font-medium transition-colors hover:text-white', route.path === l.href ? 'text-white' : 'text-white/70']">
           {{ l.label }}
         </NuxtLink>
+        <a href="https://youtube.com/@aocmizioncity" target="_blank"
+          :class="['inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider transition-all px-3 py-1 rounded-full', isLive ? 'bg-red-600 text-white animate-pulse' : 'text-white/70 hover:text-white']">
+          <span :class="['w-1.5 h-1.5 rounded-full', isLive ? 'bg-white' : 'bg-red-500']" />
+          {{ isLive ? 'LIVE NOW' : 'Watch Live' }}
+        </a>
       </div>
 
       <div class="hidden lg:flex items-center gap-3">
@@ -77,12 +82,22 @@ onMounted(() => {
 const navLinks = [
   { href: '/', label: 'Home' },
   { href: '/our-messages', label: 'Messages' },
+  { href: '/news', label: 'News' },
   { href: '/givings', label: 'Givings' },
   { href: '/events', label: 'Events' },
   { href: '/healing-school', label: 'Healing School' },
   { href: '/store', label: 'Store' },
   { href: '/about-us', label: 'About Us' },
 ]
+
+const isLive = ref(false)
+const checkLive = () => {
+  const now = new Date()
+  const day = now.getDay() // 0 = Sunday
+  const hour = now.getUTCHours() + 1 // WAT = UTC+1
+  isLive.value = day === 0 && hour >= 9 && hour < 13
+}
+onMounted(() => { checkLive(); setInterval(checkLive, 60000) })
 const mediaLinks = [
   { href: '/our-music', label: 'Music' },
   { href: '/gallery', label: 'Gallery' },

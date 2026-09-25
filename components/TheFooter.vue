@@ -39,7 +39,7 @@
         <div>
           <h4 class="font-bold text-sm uppercase tracking-wider mb-4 text-white/80">Contact Us</h4>
           <div class="space-y-3 text-sm text-white/60">
-            <p class="flex items-start gap-2"><i class="fas fa-phone mt-1 text-xs" /> +234 902 729 3178</p>
+            <p class="flex items-start gap-2"><i class="fas fa-phone mt-1 text-xs" /> 09113191048</p>
             <p class="flex items-start gap-2"><i class="fas fa-envelope mt-1 text-xs" /> hello@aocmi.com</p>
             <p class="flex items-start gap-2"><i class="fas fa-map-marker-alt mt-1 text-xs" /> Jos, Plateau State, Nigeria</p>
           </div>

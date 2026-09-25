@@ -24,8 +24,9 @@
         </NuxtLink>
       </div>
       <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-        <a v-for="m in messages" :key="m.id" :href="m.link" target="_blank" class="messages-link group">
-          <div class="card-hover bg-white">
+        <ScrollReveal v-for="(m, i) in messages" :key="m.id" anim="fadeUp" :delay="`${(i % 4) * 0.08}s`">
+        <a :href="m.link" target="_blank" class="messages-link group block">
+          <div class="card-hover bg-white h-full">
             <div class="overflow-hidden">
               <img :src="m.image" :alt="m.title"
                 class="w-full h-32 md:h-44 object-cover group-hover:scale-105 transition-transform duration-500" />
@@ -38,6 +39,7 @@
             </div>
           </div>
         </a>
+        </ScrollReveal>
       </div>
       <p v-if="!messages.length" class="text-center text-gray-400 mt-8">No messages found.</p>
       <Pagination :pages="pages" :current="page" />
