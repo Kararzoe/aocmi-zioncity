@@ -115,7 +115,7 @@ const fmt = (s) => { if (!s) return '0:00'; const m = Math.floor(s / 60); const 
 .player-title { font-size: 12px; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 140px; }
 .player-sub { font-size: 10px; color: rgba(255,255,255,0.4); }
 .player-controls { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
-.ctrl-btn { display: flex; flex-direction: column; align-items: center; color: rgba(255,255,255,0.6); hover:color: white; background: none; border: none; cursor: pointer; padding: 4px; transition: color 0.2s; }
+.ctrl-btn { display: flex; flex-direction: column; align-items: center; color: rgba(255,255,255,0.6); background: none; border: none; cursor: pointer; padding: 4px; transition: color 0.2s; }
 .ctrl-btn:hover { color: white; }
 .play-btn { width: 38px; height: 38px; border-radius: 50%; background: linear-gradient(135deg, #6366f1, #4f46e5); border: none; color: white; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 14px; box-shadow: 0 4px 12px rgba(99,102,241,0.4); transition: transform 0.2s; }
 .play-btn:hover { transform: scale(1.08); }
