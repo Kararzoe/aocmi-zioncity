@@ -18,6 +18,10 @@
         <label class="block text-sm mb-1">Cover Image</label>
         <input name="img" type="file" accept="image/*" required class="w-full" />
       </div>
+      <div>
+        <label class="block text-sm mb-1">Audio File (optional — .mp3, .m4a)</label>
+        <input name="audio" type="file" accept="audio/*" class="w-full" />
+      </div>
       <button :disabled="loading" class="bg-primary text-white px-6 py-3 rounded disabled:opacity-50">
         {{ loading ? 'Saving...' : 'Save Message' }}
       </button>

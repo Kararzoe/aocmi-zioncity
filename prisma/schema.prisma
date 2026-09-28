@@ -33,6 +33,7 @@ model Message {
   image       String
   description String
   link        String
+  audio       String        @default("")
   slug        String?       @unique
   seriesId    Int?          @map("series_id")
   seriesOrder Int?          @map("series_order")

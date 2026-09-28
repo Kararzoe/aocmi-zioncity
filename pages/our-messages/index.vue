@@ -25,17 +25,22 @@
       </div>
       <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
         <ScrollReveal v-for="(m, i) in messages" :key="m.id" anim="fadeUp" :delay="`${(i % 4) * 0.08}s`">
-        <a :href="m.link" target="_blank" class="messages-link group block">
+        <a :href="m.link" target="_blank" class="messages-link group block" @click="handlePlay(m, $event)">
           <div class="card-hover bg-white h-full">
-            <div class="overflow-hidden">
+            <div class="overflow-hidden relative">
               <img :src="m.image" :alt="m.title"
                 class="w-full h-32 md:h-44 object-cover group-hover:scale-105 transition-transform duration-500" />
+              <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                <div class="w-12 h-12 rounded-full bg-white/90 flex items-center justify-center">
+                  <i :class="m.audio ? 'fas fa-play ml-1' : 'fas fa-external-link-alt'" class="text-[#1a237e] text-sm" />
+                </div>
+              </div>
             </div>
             <div class="p-5">
               <span v-if="m.series" class="text-xs text-purple-600 bg-purple-50 px-2 py-0.5 rounded-full mb-2 inline-block">{{ m.series.title }}</span>
               <h3 class="font-bold text-sm mb-2">{{ m.title.length > 30 ? m.title.slice(0, 30) + '...' : m.title }}</h3>
               <p class="text-xs text-gray-400 mb-3">{{ new Date(m.createdAt).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }) }}</p>
-              <span class="text-[#1a237e] text-xs font-semibold group-hover:underline">Listen Now →</span>
+              <span class="text-[#1a237e] text-xs font-semibold group-hover:underline">{{ m.audio ? 'Play Now →' : 'Listen Now →' }}</span>
             </div>
           </div>
         </a>
@@ -52,6 +57,7 @@ const route = useRoute()
 const router = useRouter()
 const searchInput = ref(route.query.search || '')
 const page = computed(() => parseInt(route.query.page || '1'))
+const { setTrack } = useAudioPlayer()
 
 const { data: seriesData } = useFetch('/api/sermon-series')
 const allSeries = computed(() => seriesData.value?.series || [])
@@ -61,4 +67,11 @@ const messages = computed(() => data.value?.messages || [])
 const pages = computed(() => data.value?.pages || 1)
 
 const doSearch = () => router.push({ query: { ...route.query, search: searchInput.value, page: 1 } })
+
+const handlePlay = (m, e) => {
+  if (m.audio) {
+    e.preventDefault()
+    setTrack({ src: m.audio, title: m.title, img: m.image, link: m.link })
+  }
+}
 </script>

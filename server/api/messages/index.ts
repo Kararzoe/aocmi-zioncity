@@ -26,12 +26,16 @@ export default defineEventHandler(async (event) => {
     const desc = get('desc')?.data.toString()
     const link = get('link')?.data.toString()
     const imgFile = get('img')
+    const audioFile = get('audio')
     const seriesId = get('seriesId')?.data.toString()
     const seriesOrder = get('seriesOrder')?.data.toString()
     if (!title || !desc || !link || !imgFile) throw createError({ statusCode: 400, message: 'All fields required' })
     const image = await saveFile({ arrayBuffer: async () => imgFile.data.buffer, name: imgFile.filename || 'img.jpg' }, 'messages')
+    const audio = audioFile?.data?.length
+      ? await saveFile({ arrayBuffer: async () => audioFile.data.buffer, name: audioFile.filename || 'audio.mp3' }, 'messages/audio')
+      : ''
     const message = await prisma.message.create({
-      data: { userId: user.id, title, image, description: desc, link, slug: makeSlug(title), seriesId: seriesId ? parseInt(seriesId) : null, seriesOrder: seriesOrder ? parseInt(seriesOrder) : null },
+      data: { userId: user.id, title, image, description: desc, link, audio, slug: makeSlug(title), seriesId: seriesId ? parseInt(seriesId) : null, seriesOrder: seriesOrder ? parseInt(seriesOrder) : null },
     })
     return message
   }
