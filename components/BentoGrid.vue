@@ -57,20 +57,6 @@
         </NuxtLink>
       </ScrollReveal>
 
-      <!-- CELL 5: Wide — Scripture -->
-      <ScrollReveal anim="fadeUp" delay="0.25s" class="bento-cell bento-wide">
-        <div class="w-full h-full glass-dark flex items-center justify-center p-6 relative noise" style="background: linear-gradient(135deg, rgba(10,17,40,0.9), rgba(74,20,140,0.6))">
-          <div class="absolute top-3 left-4 text-white/20 text-6xl font-black leading-none select-none">"</div>
-          <div class="text-center relative z-10">
-            <p class="text-white/90 text-sm md:text-base italic leading-relaxed font-light max-w-md">
-              "For God so loved the world that He gave His only begotten Son, that whoever believes in Him should not perish but have everlasting life."
-            </p>
-            <p class="liquid-gold text-xs font-bold mt-3 uppercase tracking-widest">John 3:16</p>
-          </div>
-          <div class="absolute bottom-3 right-4 text-white/20 text-6xl font-black leading-none select-none rotate-180">"</div>
-        </div>
-      </ScrollReveal>
-
       <!-- CELL 6: Normal — Music -->
       <ScrollReveal anim="zoomIn" delay="0.3s" class="bento-cell">
         <NuxtLink to="/our-music" class="block w-full h-full relative noise" style="background: linear-gradient(135deg, #0ea5e9, #0284c7, #075985)">
